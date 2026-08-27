@@ -28,7 +28,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
       overflow: hidden;
       border-radius: 12px;
-      background-color: white; /* Asegura que las olas se vean contra el fondo */
+      background-color: #ffffff;
     }
 
     .invitation-img {
@@ -37,45 +37,41 @@
       display: block;
     }
 
-    /* CAPAS DE OLAS RODANTES (Superpuestas) */
+    /* OLAS ANIMADAS SVG SOBREPUESTAS */
     .wave-rolling {
       position: absolute;
       bottom: 0;
       left: 0;
-      width: 200%; /* El doble de ancho para el movimiento */
-      height: 20%; /* Altura de la zona de olas */
+      width: 200%;
+      height: 25%;
       pointer-events: none;
       background-repeat: repeat-x;
-      transform: translateZ(0); /* Mejora rendimiento */
     }
 
-    /* OLA 1: Más rápida y transparente (Fondo) */
     .wave-rolling-1 {
       z-index: 4;
-      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0 30V120H1200V30C1000 60 800 60 600 30C400 0 200 0 0 30Z" fill="%23FFFFFF" opacity="0.3"/></svg>');
-      background-size: 50% 100%; /* Ajusta el patrón */
-      animation: waveMoveLinear 6s linear infinite;
+      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.4)"/></svg>');
+      background-size: 50% 100%;
+      animation: waveMoveLinear 8s linear infinite;
     }
 
-    /* OLA 2: Más lenta y visible (Frente, efecto rodante) */
     .wave-rolling-2 {
       z-index: 5;
-      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0 40V120H1200V40C1000 70 800 70 600 40C400 10 200 10 0 40Z" fill="%23FFFFFF" opacity="0.6"/></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C200,-20 400,80 600,20 C800,-40 1000,70 1200,30 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.6)"/></svg>');
       background-size: 50% 100%;
-      animation: waveMoveLinear 10s linear infinite reverse; /* Movimiento contrario */
+      animation: waveMoveLinear 5s linear infinite reverse;
     }
 
-    /* Animación de movimiento lineal constante */
     @keyframes waveMoveLinear {
       0% {
         transform: translateX(0);
       }
       100% {
-        transform: translateX(-50%); /* Se desplaza media imagen para el loop */
+        transform: translateX(-50%);
       }
     }
 
-    /* Contenedor de Burbujas */
+    /* BURBUJAS */
     .bubbles-container {
       position: absolute;
       top: 0;
@@ -83,7 +79,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 10; /* Por encima de las olas */
+      z-index: 10;
     }
 
     .bubble {
@@ -93,7 +89,7 @@
       border: 1px solid rgba(255, 255, 255, 0.7);
       border-radius: 50%;
       box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.6);
-      animation: rise 7s ease-in infinite;
+      animation: rise 6s ease-in infinite;
     }
 
     @keyframes rise {
@@ -115,11 +111,11 @@
       }
     }
 
-    /* Botones invisibles (Sin alterar nada más) */
+    /* BOTONES */
     .clickable-area {
       position: absolute;
       cursor: pointer;
-      z-index: 20; /* Por encima de todo */
+      z-index: 20;
     }
 
     .location-btn {
@@ -151,7 +147,6 @@
   <div class="invitation-container">
     <img src="invitacion.png" alt="Invitación Under The Sea" class="invitation-img">
 
-    <!-- CAPAS DE OLAS AGREGADAS -->
     <div class="wave-rolling wave-rolling-1"></div>
     <div class="wave-rolling wave-rolling-2"></div>
 
@@ -172,7 +167,7 @@
 
     function createBubbles() {
       const container = document.getElementById("bubblesContainer");
-      const bubbleCount = 16; /* Ligeramente más burbujas */
+      const bubbleCount = 16;
 
       for (let i = 0; i < bubbleCount; i++) {
         const bubble = document.createElement("div");
@@ -183,7 +178,7 @@
         bubble.style.height = `${size}px`;
         bubble.style.left = `${Math.random() * 90 + 5}%`;
         bubble.style.animationDelay = `${Math.random() * 4}s`;
-        bubble.style.animationDuration = `${Math.random() * 3 + 5s`; /* Ligeramente más lentas */
+        bubble.style.animationDuration = `${Math.random() * 3 + 4}s`;
 
         container.appendChild(bubble);
       }
