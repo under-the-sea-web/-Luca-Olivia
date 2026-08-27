@@ -37,29 +37,29 @@
       display: block;
     }
 
-    /* OLAS ANIMADAS SVG SOBREPUESTAS */
+    /* OLAS AJUSTADAS: Mayor transparencia y altura adecuada */
     .wave-rolling {
       position: absolute;
       bottom: 0;
       left: 0;
       width: 200%;
-      height: 25%;
+      height: 32%; /* Cubre mejor desde el borde inferior */
       pointer-events: none;
       background-repeat: repeat-x;
     }
 
     .wave-rolling-1 {
       z-index: 4;
-      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.4)"/></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,40 C150,90 350,10 500,60 C650,110 900,20 1200,50 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.22)"/></svg>');
       background-size: 50% 100%;
-      animation: waveMoveLinear 8s linear infinite;
+      animation: waveMoveLinear 9s linear infinite;
     }
 
     .wave-rolling-2 {
       z-index: 5;
-      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,30 C200,-20 400,80 600,20 C800,-40 1000,70 1200,30 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.6)"/></svg>');
+      background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" xmlns="http://www.w3.org/2000/svg"><path d="M0,60 C200,10 400,80 600,30 C800,-10 1000,60 1200,40 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.35)"/></svg>');
       background-size: 50% 100%;
-      animation: waveMoveLinear 5s linear infinite reverse;
+      animation: waveMoveLinear 6s linear infinite reverse;
     }
 
     @keyframes waveMoveLinear {
@@ -111,7 +111,7 @@
       }
     }
 
-    /* BOTONES */
+    /* BOTONES INVISIBLES */
     .clickable-area {
       position: absolute;
       cursor: pointer;
