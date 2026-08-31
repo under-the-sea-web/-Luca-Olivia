@@ -53,7 +53,7 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 1.5rem;
             letter-spacing: 6px;
-            color: var(--text-pearl);
+            color: var(--text-pearl); /* COLOR PERLA SOLICITADO */
             text-shadow: 0 2px 4px rgba(0,0,0,0.15), 0 0 10px rgba(255,255,255,0.8);
             z-index: 5;
             margin-bottom: 10px;
@@ -144,3 +144,303 @@
             padding: 40px 20px 60px 20px;
             text-align: center;
             overflow: hidden;
+        }
+
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-top: 20px;
+        }
+
+        .name-luca { color: var(--blue-accent); }
+        .ampersand { font-size: 2.2rem; color: #a2b9bc; display: block; margin: -10px 0; }
+        .name-olivia { color: var(--pink-accent); }
+
+        .badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .badge {
+            padding: 6px 16px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .badge-blue { background-color: #a3c4f3; }
+        .badge-pink { background-color: #f8ad9d; }
+
+        .starfish-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin: 30px 0 20px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .detail-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .detail-item img {
+            width: 28px;
+            height: 28px;
+            margin-bottom: 8px;
+        }
+
+        .detail-item span {
+            font-size: 0.75rem;
+            color: #777;
+            font-weight: 600;
+        }
+
+        .detail-item strong {
+            font-size: 0.85rem;
+            color: #333;
+            margin-top: 2px;
+        }
+
+        .location-link {
+            display: block;
+            margin: 20px 0 30px 0;
+            text-decoration: underline;
+            color: var(--blue-accent);
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px 10px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .btn:active { transform: scale(0.98); }
+        .btn-confirm { background-color: #7ba0b5; }
+        .btn-questions { background-color: #e5989b; }
+
+        /* Animaciones Ilustraciones */
+        .illustration-ship {
+            position: absolute;
+            bottom: 60px;
+            left: -20px;
+            width: 140px;
+            z-index: 2;
+            animation: boatSway 4s ease-in-out infinite alternate;
+            transform-origin: bottom center;
+        }
+
+        @keyframes boatSway {
+            0% { transform: rotate(-3deg) translateY(0px); }
+            100% { transform: rotate(4deg) translateY(-6px); }
+        }
+
+        .illustration-tail {
+            position: absolute;
+            bottom: 40px;
+            right: -10px;
+            width: 130px;
+            z-index: 2;
+            animation: tailFin 3.5s ease-in-out infinite alternate;
+            transform-origin: bottom right;
+        }
+
+        @keyframes tailFin {
+            0% { transform: rotate(0deg) scaleX(1); }
+            50% { transform: rotate(-5deg) scaleX(0.95); }
+            100% { transform: rotate(3deg) scaleX(1.02); }
+        }
+
+        .decor-star { fill: #e5989b; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Pantalla Inicial Mar -->
+    <section class="hero-ocean" id="hero">
+        <canvas id="bubbleCanvas"></canvas>
+        
+        <h1>UNDER THE SEA</h1>
+        
+        <svg class="wave-line" viewBox="0 0 50 15">
+            <path d="M0,7 Q12.5,0 25,7 T50,7" fill="none" stroke="#fdfbf7" stroke-width="2"/>
+        </svg>
+
+        <div class="scroll-arrow" onclick="scrollToInv()"></div>
+
+        <div class="sea-waves">
+            <div class="wave"></div>
+            <div class="wave w2"></div>
+        </div>
+    </section>
+
+    <!-- Sección Invitación -->
+    <section class="invitation-body" id="invitation">
+        <!-- SVG Barco Pirata -->
+        <svg class="illustration-ship" viewBox="0 0 200 200">
+            <path d="M20,130 C50,130 60,160 100,160 C140,160 150,130 180,130 L160,170 C120,185 80,185 40,170 Z" fill="#8d5b4c"/>
+            <rect x="95" y="40" width="10" height="100" fill="#5c3d2e"/>
+            <path d="M30,50 Q100,30 95,110 Q40,90 30,50 Z" fill="#e8f1f5" stroke="#7ba0b5" stroke-width="3"/>
+            <path d="M95,30 L140,40 L95,50 Z" fill="#e5989b"/>
+            <circle cx="115" cy="40" r="3" fill="#fff"/>
+        </svg>
+
+        <!-- SVG Cola de Sirena -->
+        <svg class="illustration-tail" viewBox="0 0 200 250">
+            <path d="M130,220 C120,160 160,110 150,50 C130,80 100,70 80,20 C85,80 50,100 80,160 C90,180 110,210 130,220 Z" fill="#b5838d"/>
+            <path d="M150,50 C170,20 190,10 195,5 C180,35 170,60 150,70 Z" fill="#e5989b"/>
+            <path d="M80,20 C60,5 40,0 30,0 C45,25 60,45 75,50 Z" fill="#e5989b"/>
+        </svg>
+
+        <!-- Estrella Top -->
+        <svg class="starfish-icon" viewBox="0 0 24 24">
+            <path class="decor-star" d="M12,2 L14.5,9 L22,9.5 L16,14 L18,21 L12,17 L6,21 L8,14 L2,9.5 L9.5,9 Z"/>
+        </svg>
+
+        <div class="names">
+            <div class="name-luca">Luca</div>
+            <span class="ampersand">&</span>
+            <div class="name-olivia">Olivia</div>
+        </div>
+
+        <div class="badges">
+            <span class="badge badge-blue">3 AÑOS</span>
+            <svg class="starfish-icon" viewBox="0 0 24 24">
+                <path class="decor-star" d="M12,2 L14.5,9 L22,9.5 L16,14 L18,21 L12,17 L6,21 L8,14 L2,9.5 L9.5,9 Z"/>
+            </svg>
+            <span class="badge badge-pink">1 AÑO</span>
+        </div>
+
+        <div class="details-grid">
+            <div class="detail-item">
+                <svg viewBox="0 0 24 24" class="starfish-icon"><path fill="#7ba0b5" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
+                <span>SÁBADO</span>
+                <strong>19 SEP</strong>
+            </div>
+            <div class="detail-item">
+                <svg viewBox="0 0 24 24" class="starfish-icon"><path fill="#7ba0b5" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                <span>HORA</span>
+                <strong>1 P.M.</strong>
+            </div>
+            <div class="detail-item">
+                <svg viewBox="0 0 24 24" class="starfish-icon"><path fill="#7ba0b5" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span>LUGAR</span>
+                <strong>TIKITOTS</strong>
+            </div>
+        </div>
+
+        <a href="https://maps.app.goo.gl/1EFtXWxagwyvAreS6" target="_blank" class="location-link">
+            PLAZA TRIBECA
+        </a>
+
+        <div class="buttons-container">
+            <a id="btnConfirm" href="#" target="_blank" class="btn btn-confirm">
+                CONFIRMA ASISTENCIA
+            </a>
+            <a id="btnQuestions" href="#" target="_blank" class="btn btn-questions">
+                PREGUNTAS
+            </a>
+        </div>
+    </section>
+</div>
+
+<script>
+    function scrollToInv() {
+        document.getElementById('invitation').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    const phone = "5219987399674";
+    const msgConfirm = "Hola AIRELA\nConfirmo mi asistencia al evento \"Under The Sea\"\nMi nombre es:";
+    const msgQuestions = "Hola AIRELA\nTengo preguntas sobre el evento \"Under The Sea\"";
+
+    document.getElementById('btnConfirm').href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msgConfirm)}`;
+    document.getElementById('btnQuestions').href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msgQuestions)}`;
+
+    const canvas = document.getElementById('bubbleCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = canvas.parentElement.clientWidth;
+        canvas.height = canvas.parentElement.clientHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const bubbles = [];
+    for (let i = 0; i < 25; i++) {
+        bubbles.push({
+            x: Math.random() * canvas.width,
+            y: canvas.height + Math.random() * 200,
+            radius: Math.random() * 6 + 2,
+            speed: Math.random() * 1.5 + 0.5,
+            swing: Math.random() * 0.05,
+            swingAngle: Math.random() * Math.PI * 2
+        });
+    }
+
+    function animateBubbles() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        bubbles.forEach(b => {
+            b.y -= b.speed;
+            b.swingAngle += b.swing;
+            b.x += Math.sin(b.swingAngle) * 0.5;
+
+            if (b.y < -10) {
+                b.y = canvas.height + 10;
+                b.x = Math.random() * canvas.width;
+            }
+
+            ctx.beginPath();
+            ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+        });
+
+        requestAnimationFrame(animateBubbles);
+    }
+    animateBubbles();
+</script>
+</body>
+</html>
