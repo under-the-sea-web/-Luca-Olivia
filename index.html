@@ -3,444 +3,475 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitación Under The Sea - Luca & Olivia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Invitación Luca & Olivia - Bajo el Mar</title>
     <style>
+        /* --- ESTILOS GENERALES Y FUENTES --- */
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap');
+
         :root {
-            --bg-sea: #bde0fe;
-            --bg-sand: #fbf6ee;
-            --blue-accent: #6c9ab5;
-            --pink-accent: #e5989b;
-            --text-pearl: #fdfbf7;
+            /* Colores de la paleta original */
+            --bg-mar: #A7E2F2; /* Azul celeste pastel */
+            --ola-perla: rgba(255, 255, 255, 0.4); /* Olas traslúcidas perla */
+            --text-top: #FFFFFF; /* TEXTO "UNDER THE SEA" EN BLANCO */
+            --bg-card: #F9F1E7; /* Beige arena claro */
+            --text-name-luca: #5C7A8F; /* Azul grisáceo */
+            --text-name-olivia: #CD8E8E; /* Rosa viejo */
+            --text-beige-general: #D1B0A1; /* Beige de los textos informativos */
+            --accent-blue: #9DBDCF;
+            --accent-pink: #E1AFB8;
         }
 
-        * {
-            box-sizing: border-box;
+        body, html {
             margin: 0;
             padding: 0;
-        }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: #0d1b2a;
-            color: #4a4a4a;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 480px;
-            margin: 0 auto;
-            position: relative;
-            background-color: var(--bg-sand);
-            box-shadow: 0 0 20px rgba(0,0,0,0.3);
-            min-height: 100vh;
-        }
-
-        /* Hero / Ocean Section */
-        .hero-ocean {
-            height: 100vh;
-            background: linear-gradient(180deg, #a2d2ff 0%, #bde0fe 60%, #caf0f8 100%);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero-ocean h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 6px;
-            color: var(--text-pearl); /* COLOR PERLA SOLICITADO */
-            text-shadow: 0 2px 4px rgba(0,0,0,0.15), 0 0 10px rgba(255,255,255,0.8);
-            z-index: 5;
-            margin-bottom: 10px;
-        }
-
-        .wave-line {
-            width: 40px;
-            height: 10px;
-            margin-bottom: 30px;
-            z-index: 5;
-        }
-
-        .scroll-arrow {
-            width: 24px;
-            height: 40px;
-            border: 2px solid var(--text-pearl);
-            border-radius: 12px;
-            position: relative;
-            cursor: pointer;
-            z-index: 5;
-            animation: bounce 2s infinite;
-        }
-
-        .scroll-arrow::before {
-            content: '';
-            position: absolute;
-            top: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 4px;
-            height: 8px;
-            background: var(--text-pearl);
-            border-radius: 2px;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-        }
-
-        /* Olas translúcidas perla */
-        .sea-waves {
-            position: absolute;
-            bottom: 0;
-            left: 0;
             width: 100%;
-            height: 120px;
-            z-index: 3;
+            height: 100%;
+            overflow: hidden; /* Oculta scroll inicial */
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--bg-mar);
         }
 
-        .wave {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 200%;
-            height: 100px;
-            background: repeat-x url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0 C150,90 350,-40 500,40 C650,120 900,10 1200,40 L1200,120 L0,120 Z' fill='rgba(253, 251, 247, 0.45)'%3E%3C/path%3E%3C/svg%3E");
-            animation: waveAnim 12s linear infinite;
-        }
-
-        .wave.w2 {
-            bottom: 10px;
-            opacity: 0.6;
-            animation: waveAnim 8s linear infinite reverse;
-        }
-
-        @keyframes waveAnim {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* Canvas de Burbujas */
-        #bubbleCanvas {
-            position: absolute;
+        /* --- SECCIÓN 1: INTRO (BAJO EL MAR) --- */
+        #intro-screen {
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: 4;
-        }
-
-        /* Invitation Section */
-        .invitation-body {
-            position: relative;
-            background-color: var(--bg-sand);
-            padding: 40px 20px 60px 20px;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .names {
-            font-family: 'Great Vibes', cursive;
-            font-size: 4rem;
-            line-height: 1.1;
-            margin-top: 20px;
-        }
-
-        .name-luca { color: var(--blue-accent); }
-        .ampersand { font-size: 2.2rem; color: #a2b9bc; display: block; margin: -10px 0; }
-        .name-olivia { color: var(--pink-accent); }
-
-        .badges {
+            background-color: var(--bg-mar);
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 15px;
-            margin: 25px 0;
+            cursor: pointer;
+            z-index: 100;
+            transition: transform 1s ease-in-out;
         }
 
-        .badge {
-            padding: 6px 16px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #fff;
+        /* Texto "UNDER THE SEA" - Ahora en BLANCO */
+        #intro-screen h1 {
+            color: var(--text-top);
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0.9;
         }
 
-        .badge-blue { background-color: #a3c4f3; }
-        .badge-pink { background-color: #f8ad9d; }
-
-        .starfish-icon {
-            width: 24px;
-            height: 24px;
+        /* Flecha indicadora */
+        .down-arrow {
+            color: var(--ola-perla);
+            font-size: 3rem;
+            animation: bounce 2s infinite;
         }
 
-        .details-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px;
-            margin: 30px 0 20px 0;
-            position: relative;
-            z-index: 10;
+        /* Olas traslúcidas (efecto fondo) */
+        .wave-bg {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            opacity: 0.3;
+            background-repeat: repeat-x;
+            background-position: 0 bottom;
+            transform-origin: center bottom;
         }
 
-        .detail-item {
+        /* Representación de las olas traslúcidas */
+        .wave-top {
+            top: -150px;
+            height: 300px;
+            background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg"><path fill="%23FFFFFF" fill-opacity="0.4" d="M0,192L48,197.3C96,203,192,213,288,192C384,171,480,117,576,112C672,107,768,149,864,160C960,171,1056,149,1152,128C1248,107,1344,85,1392,74.7L1440,64L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg>');
+            animation: waveFlow 20s linear infinite;
+        }
+
+        /* --- SECCIÓN 2: INVITACIÓN --- */
+        #invitation-card {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-card);
+            overflow-y: auto; /* Permite scroll dentro de la tarjeta */
+            z-index: 50;
+            transition: transform 1s ease-in-out;
+            padding: 40px 20px;
+            box-sizing: border-box;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        .detail-item img {
-            width: 28px;
-            height: 28px;
-            margin-bottom: 8px;
+        /* Estado activado (tras el clic) */
+        body.active #intro-screen { transform: translateY(-100%); }
+        body.active #invitation-card { transform: translateY(-100%); }
+        body.active { overflow: auto; } /* Reactiva scroll global */
+
+        /* Contenedor principal del diseño */
+        .card-content {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            text-align: center;
+            color: var(--text-beige-general);
         }
 
-        .detail-item span {
-            font-size: 0.75rem;
-            color: #777;
-            font-weight: 600;
+        /* --- ELEMENTOS GRÁFICOS Y ANIMACIONES --- */
+        
+        /* Barco (Izquierda) */
+        .svg-ship {
+            position: absolute;
+            left: -30px;
+            top: 250px;
+            width: 150px;
+            height: auto;
+            opacity: 0.9;
+            animation: shipSway 4s ease-in-out infinite;
+            z-index: 10;
         }
 
-        .detail-item strong {
-            font-size: 0.85rem;
-            color: #333;
-            margin-top: 2px;
+        /* Aleta de Sirena (Derecha) */
+        .svg-mermaid-tail {
+            position: absolute;
+            right: -20px;
+            bottom: 50px;
+            width: 180px;
+            height: auto;
+            opacity: 0.9;
+            transform-origin: bottom center;
+            animation: tailFlutter 5s ease-in-out infinite;
+            z-index: 10;
         }
 
-        .location-link {
+        /* Cofre del Tesoro */
+        .svg-treasure {
+            position: absolute;
+            left: 10px;
+            bottom: 20px;
+            width: 100px;
+            height: auto;
+            opacity: 0.8;
+            z-index: 5;
+        }
+
+        /* Decoraciones de Olas y Corales (Fondo) */
+        .svg-waves-bottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+            opacity: 0.6;
+        }
+        
+        /* Animación sutil de las olas del fondo */
+        .wave-path-pink { animation: waveSwaySlight 6s ease-in-out infinite alternate; }
+        .wave-path-blue { animation: waveSwaySlight 8s ease-in-out infinite alternate-reverse; }
+
+        /* --- TEXTOS DE LA TARJETA --- */
+        
+        .divider-star { font-size: 1.5rem; margin: 15px 0; color: #E8C3A9; }
+
+        .names-container {
+            margin: 20px 0;
+            position: relative;
+            z-index: 20; /* Por encima de los gráficos */
+        }
+
+        .name-luca {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: var(--text-name-luca);
+            margin: 0;
+            line-height: 1;
+        }
+
+        .ampersand {
+            font-size: 2rem;
+            color: var(--text-beige-general);
+            margin: -10px 0;
             display: block;
-            margin: 20px 0 30px 0;
-            text-decoration: underline;
-            color: var(--blue-accent);
-            font-weight: 700;
+        }
+
+        .name-olivia {
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem;
+            color: var(--text-name-olivia);
+            margin: 0;
+            line-height: 1;
+        }
+
+        /* Bloques de Edad */
+        .age-blocks {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .age-block {
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
             font-size: 0.9rem;
             letter-spacing: 1px;
-            cursor: pointer;
-            position: relative;
-            z-index: 10;
+            color: #FFFFFF;
+        }
+        .age-luca { background-color: var(--accent-blue); }
+        .age-olivia { background-color: var(--accent-pink); }
+        .age-star { color: #E8C3A9; font-size: 1.2rem; }
+
+        /* Detalles del Evento */
+        .event-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin: 30px 0;
+            text-align: center;
+            border-top: 1px solid #E8C3A9;
+            border-bottom: 1px solid #E8C3A9;
+            padding: 20px 0;
         }
 
-        .buttons-container {
+        .detail-item { display: flex; flex-direction: column; align-items: center; }
+        .icon { font-size: 1.5rem; margin-bottom: 5px; color: var(--text-name-luca); }
+        .label { text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; font-weight: 600; margin-bottom: 3px; }
+        .value { font-size: 0.9rem; }
+
+        /* Lugar y Enlace Mapas */
+        .location { margin: 20px 0; }
+        .location-label { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .location-place { 
+            font-size: 1.2rem; 
+            font-weight: 600; 
+            margin-top: 5px;
+            color: var(--text-name-luca);
+            text-decoration: none; /* Enlace */
+            transition: color 0.3s;
+        }
+        .location-place:hover { color: var(--accent-blue); }
+
+        /* --- BOTONES DE ACCIÓN --- */
+        .action-buttons {
             display: flex;
-            gap: 10px;
             justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            margin-bottom: 50px;
             position: relative;
-            z-index: 10;
+            z-index: 20;
         }
 
         .btn {
-            flex: 1;
-            padding: 12px 10px;
-            border-radius: 25px;
-            text-decoration: none;
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 6px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.2s;
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: transform 0.2s, box-shadow 0.2s;
         }
 
-        .btn:active { transform: scale(0.98); }
-        .btn-confirm { background-color: #7ba0b5; }
-        .btn-questions { background-color: #e5989b; }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
-        /* Animaciones Ilustraciones */
-        .illustration-ship {
+        .btn-confirm { background-color: var(--text-name-luca); }
+        .btn-questions { background-color: var(--text-name-olivia); }
+
+        /* --- SISTEMA DE BURBUJAS (Fondo) --- */
+        #bubble-container {
             position: absolute;
-            bottom: 60px;
-            left: -20px;
-            width: 140px;
-            z-index: 2;
-            animation: boatSway 4s ease-in-out infinite alternate;
-            transform-origin: bottom center;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 2; /* Detrás de textos y gráficos principales */
+            pointer-events: none; /* No interfiere con clics */
         }
 
-        @keyframes boatSway {
-            0% { transform: rotate(-3deg) translateY(0px); }
-            100% { transform: rotate(4deg) translateY(-6px); }
-        }
-
-        .illustration-tail {
+        .bubble {
             position: absolute;
-            bottom: 40px;
-            right: -10px;
-            width: 130px;
-            z-index: 2;
-            animation: tailFin 3.5s ease-in-out infinite alternate;
-            transform-origin: bottom right;
+            bottom: -20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: bubbleRise 10s infinite ease-in;
+            opacity: 0;
         }
 
-        @keyframes tailFin {
-            0% { transform: rotate(0deg) scaleX(1); }
-            50% { transform: rotate(-5deg) scaleX(0.95); }
-            100% { transform: rotate(3deg) scaleX(1.02); }
+        /* --- DEFINICIÓN DE ANIMACIONES CSS --- */
+        
+        @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-15px);} 60% {transform: translateY(-7px);} }
+        @keyframes waveFlow { 0% { background-position-x: 0; } 100% { background-position-x: -1440px; } }
+        
+        /* Barco: balanceo suave */
+        @keyframes shipSway { 0%, 100% { transform: rotate(-2deg) translateY(0); } 50% { transform: rotate(2deg) translateY(-5px); } }
+        
+        /* Aleta: aleteo suave */
+        @keyframes tailFlutter { 0%, 100% { transform: rotate(0deg); } 25% { transform: rotate(3deg); } 75% { transform: rotate(-3deg); } }
+        
+        /* Olas fondo: movimiento sutil horizontal */
+        @keyframes waveSwaySlight { from { transform: translateX(-10px); } to { transform: translateX(10px); } }
+
+        /* Burbujas: subida con desvanecimiento */
+        @keyframes bubbleRise {
+            0% { transform: translateY(0) scale(0.5); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-1000px) scale(1.2); opacity: 0; }
         }
 
-        .decor-star { fill: #e5989b; }
+        /* --- RESPONSIVE ADAPTATIONS --- */
+        @media (max-width: 600px) {
+            .name-luca, .name-olivia { font-size: 3.5rem; }
+            .svg-ship { width: 100px; top: 220px; left: -15px; }
+            .svg-mermaid-tail { width: 130px; }
+            .event-details { grid-template-columns: 1fr; gap: 15px; }
+            .btn { padding: 10px 20px; font-size: 0.8rem; }
+        }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <!-- Pantalla Inicial Mar -->
-    <section class="hero-ocean" id="hero">
-        <canvas id="bubbleCanvas"></canvas>
-        
-        <h1>UNDER THE SEA</h1>
-        
-        <svg class="wave-line" viewBox="0 0 50 15">
-            <path d="M0,7 Q12.5,0 25,7 T50,7" fill="none" stroke="#fdfbf7" stroke-width="2"/>
-        </svg>
+    <div id="intro-screen" onclick="activateInvitation()">
+        <div class="wave-bg wave-top"></div>
+        <h1>Under the Sea</h1>
+        <div class="down-arrow">▼</div>
+    </div>
 
-        <div class="scroll-arrow" onclick="scrollToInv()"></div>
+    <div id="invitation-card">
+        <div id="bubble-container"></div>
 
-        <div class="sea-waves">
-            <div class="wave"></div>
-            <div class="wave w2"></div>
-        </div>
-    </section>
-
-    <!-- Sección Invitación -->
-    <section class="invitation-body" id="invitation">
-        <!-- SVG Barco Pirata -->
-        <svg class="illustration-ship" viewBox="0 0 200 200">
-            <path d="M20,130 C50,130 60,160 100,160 C140,160 150,130 180,130 L160,170 C120,185 80,185 40,170 Z" fill="#8d5b4c"/>
-            <rect x="95" y="40" width="10" height="100" fill="#5c3d2e"/>
-            <path d="M30,50 Q100,30 95,110 Q40,90 30,50 Z" fill="#e8f1f5" stroke="#7ba0b5" stroke-width="3"/>
-            <path d="M95,30 L140,40 L95,50 Z" fill="#e5989b"/>
-            <circle cx="115" cy="40" r="3" fill="#fff"/>
-        </svg>
-
-        <!-- SVG Cola de Sirena -->
-        <svg class="illustration-tail" viewBox="0 0 200 250">
-            <path d="M130,220 C120,160 160,110 150,50 C130,80 100,70 80,20 C85,80 50,100 80,160 C90,180 110,210 130,220 Z" fill="#b5838d"/>
-            <path d="M150,50 C170,20 190,10 195,5 C180,35 170,60 150,70 Z" fill="#e5989b"/>
-            <path d="M80,20 C60,5 40,0 30,0 C45,25 60,45 75,50 Z" fill="#e5989b"/>
-        </svg>
-
-        <!-- Estrella Top -->
-        <svg class="starfish-icon" viewBox="0 0 24 24">
-            <path class="decor-star" d="M12,2 L14.5,9 L22,9.5 L16,14 L18,21 L12,17 L6,21 L8,14 L2,9.5 L9.5,9 Z"/>
-        </svg>
-
-        <div class="names">
-            <div class="name-luca">Luca</div>
-            <span class="ampersand">&</span>
-            <div class="name-olivia">Olivia</div>
-        </div>
-
-        <div class="badges">
-            <span class="badge badge-blue">3 AÑOS</span>
-            <svg class="starfish-icon" viewBox="0 0 24 24">
-                <path class="decor-star" d="M12,2 L14.5,9 L22,9.5 L16,14 L18,21 L12,17 L6,21 L8,14 L2,9.5 L9.5,9 Z"/>
+        <div class="card-content">
+            
+            <svg class="svg-ship" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10,60 Q50,90 90,60 L85,80 Q50,100 15,80 Z" fill="#8B4513" stroke="#5D3A1A"/>
+                <rect x="45" y="10" width="10" height="50" fill="#A0522D"/>
+                <path d="M55,15 Q75,25 55,35 Z" fill="#F0F8FF" stroke="#ADD8E6"/>
+                <path d="M55,35 Q75,45 55,55 Z" fill="#F0F8FF" stroke="#ADD8E6"/>
+                <path d="M15,10 Q25,0 35,10 Q25,20 15,10 Z" fill="#E1AFB8" stroke="#CD8E8E"/>
+                <circle cx="25" cy="10" r="2" fill="white"/>
             </svg>
-            <span class="badge badge-pink">1 AÑO</span>
-        </div>
 
-        <div class="details-grid">
-            <div class="detail-item">
-                <svg viewBox="0 0 24 24" class="starfish-icon"><path fill="#7ba0b5" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10z"/></svg>
-                <span>SÁBADO</span>
-                <strong>19 SEP</strong>
+            <svg class="svg-mermaid-tail" viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">
+                <path d="M50,120 Q30,80 50,40 Q70,80 50,120 Z" fill="#9370DB" opacity="0.7"/>
+                <path d="M50,40 Q10,-10 0,20 Q30,30 50,40 Z" fill="#E1AFB8"/>
+                <path d="M50,40 Q90,-10 100,20 Q70,30 50,40 Z" fill="#E1AFB8"/>
+            </svg>
+
+            <svg class="svg-treasure" viewBox="0 0 80 60" xmlns="http://www.w3.org/2000/svg">
+                <rect x="10" y="20" width="60" height="30" rx="5" fill="#CD853F"/>
+                <path d="M10,25 Q40,5 70,25 Z" fill="#8B4513"/>
+                <rect x="35" y="30" width="10" height="10" fill="#FFD700"/>
+            </svg>
+
+            <svg class="svg-waves-bottom" viewBox="0 0 1440 320" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="wave-path-blue" fill="#A7E2F2" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,213.3C960,224,1056,192,1152,176C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+                <path class="wave-path-pink" fill="#E1AFB8" d="M0,224L48,218.7C96,213,192,203,288,213.3C384,224,480,256,576,261.3C672,267,768,245,864,218.7C960,192,1056,160,1152,149.3C1248,139,1344,149,1392,154.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+
+            <div class="divider-star">★</div>
+
+            <div class="names-container">
+                <h2 class="name-luca">Luca</h2>
+                <span class="ampersand">&</span>
+                <h2 class="name-olivia">Olivia</h2>
             </div>
-            <div class="detail-item">
-                <svg viewBox="0 0 24 24" class="starfish-icon"><path fill="#7ba0b5" d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                <span>HORA</span>
-                <strong>1 P.M.</strong>
+
+            <div class="age-blocks">
+                <div class="age-block age-luca">3 Años</div>
+                <div class="age-star">★</div>
+                <div class="age-block age-olivia">1 Año</div>
             </div>
-            <div class="detail-item">
-                <svg viewBox="0 0 24 24" class="starfish-icon"><path fill="#7ba0b5" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                <span>LUGAR</span>
-                <strong>TIKITOTS</strong>
+
+            <div class="event-details">
+                <div class="detail-item">
+                    <span class="icon">📅</span>
+                    <span class="label">Sábado</span>
+                    <span class="value">19 de Septiembre</span>
+                </div>
+                <div class="detail-item">
+                    <span class="icon">🕒</span>
+                    <span class="label">Hora</span>
+                    <span class="value">1 p.m.</span>
+                </div>
+                <div class="detail-item">
+                    <span class="icon">📍</span>
+                    <span class="label">Lugar</span>
+                    <span class="value">Tikitots</span>
+                </div>
             </div>
+
+            <div class="location">
+                <div class="location-label">★ Plaza Tribeca ★</div>
+                <a href="https://maps.google.com/?q=Plaza+Tribeca" target="_blank" class="location-place">Ver Ubicación</a>
+            </div>
+
+            <div class="divider-star">★</div>
+
+            <div class="action-buttons">
+                <a href="https://wa.me/5219987399674?text=Hola%20AIRELA%0AConfirmo%20mi%20asistencia%20al%20evento%20%22Under%20The%20Sea%22%0AMi%20nombre%20es%3A" target="_blank" class="btn btn-confirm">
+                    <span>💬</span> Confirma Asistencia
+                </a>
+                <a href="https://wa.me/5219987399674?text=Hola%20AIRELA%0ATengo%20preguntas%20sobre%20el%20evento%20%22Under%20The%20Sea%22" target="_blank" class="btn btn-questions">
+                    <span>❓</span> Preguntas
+                </a>
+            </div>
+
         </div>
+    </div>
 
-        <a href="https://maps.app.goo.gl/1EFtXWxagwyvAreS6" target="_blank" class="location-link">
-            PLAZA TRIBECA
-        </a>
+    <script>
+        // Función para activar la invitación al hacer clic en la intro
+        function activateInvitation() {
+            document.body.classList.add('active');
+            startBubbles(); // Inicia las burbujas cuando se abre la tarjeta
+        }
 
-        <div class="buttons-container">
-            <a id="btnConfirm" href="#" target="_blank" class="btn btn-confirm">
-                CONFIRMA ASISTENCIA
-            </a>
-            <a id="btnQuestions" href="#" target="_blank" class="btn btn-questions">
-                PREGUNTAS
-            </a>
-        </div>
-    </section>
-</div>
+        // Sistema de generación automática de burbujas
+        function startBubbles() {
+            const container = document.getElementById('bubble-container');
+            const bubbleCount = 15; // Número de burbujas simultáneas
 
-<script>
-    function scrollToInv() {
-        document.getElementById('invitation').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    const phone = "5219987399674";
-    const msgConfirm = "Hola AIRELA\nConfirmo mi asistencia al evento \"Under The Sea\"\nMi nombre es:";
-    const msgQuestions = "Hola AIRELA\nTengo preguntas sobre el evento \"Under The Sea\"";
-
-    document.getElementById('btnConfirm').href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msgConfirm)}`;
-    document.getElementById('btnQuestions').href = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(msgQuestions)}`;
-
-    const canvas = document.getElementById('bubbleCanvas');
-    const ctx = canvas.getContext('2d');
-
-    function resizeCanvas() {
-        canvas.width = canvas.parentElement.clientWidth;
-        canvas.height = canvas.parentElement.clientHeight;
-    }
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    const bubbles = [];
-    for (let i = 0; i < 25; i++) {
-        bubbles.push({
-            x: Math.random() * canvas.width,
-            y: canvas.height + Math.random() * 200,
-            radius: Math.random() * 6 + 2,
-            speed: Math.random() * 1.5 + 0.5,
-            swing: Math.random() * 0.05,
-            swingAngle: Math.random() * Math.PI * 2
-        });
-    }
-
-    function animateBubbles() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        bubbles.forEach(b => {
-            b.y -= b.speed;
-            b.swingAngle += b.swing;
-            b.x += Math.sin(b.swingAngle) * 0.5;
-
-            if (b.y < -10) {
-                b.y = canvas.height + 10;
-                b.x = Math.random() * canvas.width;
+            for (let i = 0; i < bubbleCount; i++) {
+                createBubble(container);
             }
 
-            ctx.beginPath();
-            ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-            ctx.fill();
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
-            ctx.lineWidth = 0.8;
-            ctx.stroke();
-        });
+            // Crea una nueva burbuja cada segundo para mantener el flujo
+            setInterval(() => createBubble(container), 1000);
+        }
 
-        requestAnimationFrame(animateBubbles);
-    }
-    animateBubbles();
-</script>
+        function createBubble(container) {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+
+            // Propiedades aleatorias para cada burbuja
+            const size = Math.random() * 15 + 5 + 'px'; // Entre 5px y 20px
+            const left = Math.random() * 100 + '%'; // Posición horizontal aleatoria
+            const delay = Math.random() * 5 + 's'; // Retraso de animación aleatorio
+            const duration = Math.random() * 5 + 7 + 's'; // Duración (velocidad) aleatoria
+
+            bubble.style.width = size;
+            bubble.style.height = size;
+            bubble.style.left = left;
+            bubble.style.animationDelay = delay;
+            bubble.style.animationDuration = duration;
+
+            container.appendChild(bubble);
+
+            // Elimina la burbuja después de que termine la animación para no sobrecargar
+            setTimeout(() => {
+                bubble.remove();
+            }, (parseFloat(delay) + parseFloat(duration)) * 1000);
+        }
+    </script>
 </body>
 </html>
