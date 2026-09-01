@@ -17,13 +17,16 @@
     content="Under The Sea - Luca & Olivia"
   >
 
-  <meta name="theme-color" content="#b9e4ef">
+  <meta
+    name="theme-color"
+    content="#b9e4ef"
+  >
 
 
-  <!-- ========================================
-       PORTADA DEL LINK EN WHATSAPP
-       CAMBIAR ESTAS URL DESPUÉS DE PUBLICAR
-       ======================================== -->
+  <!-- ==========================================
+       PORTADA DEL LINK
+       CAMBIAR TU-USUARIO CUANDO PUBLIQUES
+       ========================================== -->
 
   <meta
     property="og:title"
@@ -61,25 +64,37 @@
   >
 
 
+
   <style>
 
-    /* ==============================
+    /* ==================================================
        CONFIGURACIÓN GENERAL
-       ============================== */
+       ================================================== */
 
     * {
+
       margin: 0;
+
       padding: 0;
+
       box-sizing: border-box;
+
     }
+
 
     html {
+
       scroll-behavior: smooth;
+
       background: #bce5ef;
+
     }
 
+
     body {
+
       margin: 0;
+
       overflow-x: hidden;
 
       font-family:
@@ -88,68 +103,91 @@
         sans-serif;
 
       background: #faf4ee;
+
     }
+
 
     img {
+
       display: block;
+
       user-select: none;
+
       -webkit-user-drag: none;
+
     }
 
 
-    /* ==============================
-       PANTALLA 1
+
+    /* ==================================================
+       PRIMERA PANTALLA
        OCÉANO
-       ============================== */
+       ================================================== */
 
     .ocean-cover {
 
       position: relative;
 
       width: 100%;
+
       height: 100svh;
 
       min-height: 600px;
 
       display: flex;
-      align-items: center;
+
       justify-content: center;
 
+      align-items: center;
+
       overflow: hidden;
+
 
       background-image:
         url("fondo-oceano.jpg");
 
-      background-position: center;
       background-size: cover;
+
+      background-position: center;
+
       background-repeat: no-repeat;
 
     }
 
 
-    /* filtro muy suave */
 
     .ocean-cover::after {
 
       content: "";
 
       position: absolute;
+
       inset: 0;
 
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(255,255,255,.05),
-          rgba(134,211,231,.06)
-        );
+      z-index: 1;
 
       pointer-events: none;
+
+
+      background:
+
+        linear-gradient(
+
+          to bottom,
+
+          rgba(255,255,255,.05),
+
+          rgba(132,206,226,.06)
+
+        );
+
     }
 
 
-    /* ==============================
-       UNDER THE SEA
-       ============================== */
+
+    /* ==================================================
+       TEXTO UNDER THE SEA
+       ================================================== */
 
     .ocean-center {
 
@@ -158,14 +196,18 @@
       z-index: 10;
 
       display: flex;
+
       flex-direction: column;
+
       align-items: center;
 
-      transform: translateY(3vh);
+      justify-content: center;
+
+      text-align: center;
 
       color: white;
 
-      text-align: center;
+      transform: translateY(3vh);
 
     }
 
@@ -180,7 +222,7 @@
       font-size:
         clamp(
           20px,
-          4.2vw,
+          4vw,
           34px
         );
 
@@ -188,23 +230,40 @@
 
       letter-spacing:
         clamp(
-          7px,
+          6px,
           2vw,
           15px
         );
 
-      color: rgba(255,255,255,.96);
+      margin-left: .5em;
+
+      color:
+        rgba(
+          255,
+          255,
+          255,
+          .97
+        );
 
       text-shadow:
-        0 2px 10px
-        rgba(62,130,160,.15);
 
-      margin-left: .5em;
+        0
+        3px
+        14px
+        rgba(
+          71,
+          133,
+          161,
+          .14
+        );
 
     }
 
 
+
     .ocean-wave {
+
+      margin-top: 18px;
 
       font-size: 38px;
 
@@ -212,13 +271,17 @@
 
       line-height: 1;
 
-      margin-top: 18px;
-
       color:
-        rgba(255,255,255,.93);
+        rgba(
+          255,
+          255,
+          255,
+          .94
+        );
 
       animation:
-        waveFloat
+
+        oceanWaveMove
         3s
         ease-in-out
         infinite;
@@ -226,62 +289,104 @@
     }
 
 
-    @keyframes waveFloat {
+
+    @keyframes oceanWaveMove {
 
       0%,
       100% {
-        transform: translateX(-3px);
+
+        transform:
+          translateX(-3px);
+
       }
 
       50% {
-        transform: translateX(3px);
+
+        transform:
+          translateX(3px);
+
       }
 
     }
 
 
-    /* ==============================
+
+    /* ==================================================
        FLECHA
-       ============================== */
+       ================================================== */
 
     .scroll-button {
 
       margin-top: 32px;
 
       width: 54px;
+
       height: 54px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      border: 1px solid
-        rgba(255,255,255,.8);
 
       border-radius: 50%;
 
+      border:
+
+        1px
+        solid
+        rgba(
+          255,
+          255,
+          255,
+          .82
+        );
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+
       background:
-        rgba(255,255,255,.17);
+
+        rgba(
+          255,
+          255,
+          255,
+          .15
+        );
+
 
       backdrop-filter:
+
         blur(6px);
 
+
       -webkit-backdrop-filter:
+
         blur(6px);
+
 
       color: white;
 
-      cursor: pointer;
-
-      font-size: 28px;
+      font-size: 27px;
 
       font-weight: 200;
 
+      cursor: pointer;
+
+
       box-shadow:
-        0 6px 25px
-        rgba(59,121,150,.12);
+
+        0
+        8px
+        30px
+        rgba(
+          57,
+          118,
+          147,
+          .12
+        );
+
 
       animation:
+
         arrowMove
         2s
         ease-in-out
@@ -290,23 +395,31 @@
     }
 
 
+
     @keyframes arrowMove {
 
       0%,
       100% {
-        transform: translateY(0);
+
+        transform:
+          translateY(0);
+
       }
 
       50% {
-        transform: translateY(9px);
+
+        transform:
+          translateY(9px);
+
       }
 
     }
 
 
-    /* ==============================
-       BURBUJAS
-       ============================== */
+
+    /* ==================================================
+       BURBUJAS GENERALES
+       ================================================== */
 
     .bubble {
 
@@ -314,40 +427,92 @@
 
       bottom: -100px;
 
-      width: var(--size);
-      height: var(--size);
+      left:
+        var(--left);
 
-      left: var(--left);
+      width:
+        var(--size);
 
-      z-index: 6;
+      height:
+        var(--size);
 
       border-radius: 50%;
+
+      z-index: 6;
 
       pointer-events: none;
 
       opacity: 0;
 
-      border:
-        1px solid
-        rgba(255,255,255,.7);
 
-      background:
-        radial-gradient(
-          circle at 32% 28%,
-          rgba(255,255,255,.92),
-          rgba(255,255,255,.22) 28%,
-          rgba(183,223,240,.15) 58%,
-          rgba(255,255,255,.35)
+      border:
+
+        1px
+        solid
+        rgba(
+          255,
+          255,
+          255,
+          .65
         );
 
+
+      background:
+
+        radial-gradient(
+
+          circle
+          at 32% 28%,
+
+          rgba(
+            255,
+            255,
+            255,
+            .92
+          ),
+
+          rgba(
+            255,
+            255,
+            255,
+            .22
+          )
+          28%,
+
+          rgba(
+            183,
+            223,
+            240,
+            .14
+          )
+          60%,
+
+          rgba(
+            255,
+            255,
+            255,
+            .34
+          )
+
+        );
+
+
       box-shadow:
+
         inset
         1px
         1px
         7px
-        rgba(255,255,255,.8);
+        rgba(
+          255,
+          255,
+          255,
+          .75
+        );
+
 
       animation:
+
         riseBubble
         var(--duration)
         linear
@@ -357,6 +522,7 @@
     }
 
 
+
     @keyframes riseBubble {
 
       0% {
@@ -364,47 +530,61 @@
         opacity: 0;
 
         transform:
+
           translate3d(
             0,
             0,
             0
           )
-          scale(.75);
+
+          scale(.72);
 
       }
+
 
       10% {
+
         opacity: .55;
+
       }
+
 
       50% {
 
         transform:
+
           translate3d(
             var(--drift),
             -55vh,
             0
           )
+
           scale(1);
 
       }
 
+
       90% {
+
         opacity: .4;
+
       }
+
 
       100% {
 
         opacity: 0;
 
         transform:
+
           translate3d(
             calc(
-              var(--drift) * -0.3
+              var(--drift) * -.3
             ),
             -115vh,
             0
           )
+
           scale(1.08);
 
       }
@@ -413,9 +593,44 @@
 
 
 
-    /* ========================================
+    /* ==================================================
+       TRANSICIÓN INFERIOR
+       ================================================== */
+
+    .transition-circle {
+
+      position: absolute;
+
+      z-index: 20;
+
+      bottom: -1px;
+
+      left: 50%;
+
+      transform:
+        translateX(-50%);
+
+      width: 55px;
+
+      height: 28px;
+
+      border-radius:
+
+        50%
+        50%
+        0
+        0;
+
+      background: #fffaf5;
+
+    }
+
+
+
+
+    /* ==================================================
        SEGUNDA PANTALLA
-       ======================================== */
+       ================================================== */
 
     .invitation-section {
 
@@ -426,36 +641,49 @@
       min-height: 100svh;
 
       display: flex;
+
       justify-content: center;
+
       align-items: flex-start;
 
       overflow: hidden;
 
+
       background:
+
         linear-gradient(
+
           180deg,
-          #fffaf5 0%,
-          #fcf3eb 100%
+
+          #fffaf5
+          0%,
+
+          #faf2ea
+          100%
+
         );
 
     }
 
 
-    /* ==============================
-       TARJETA
-       ============================== */
+
+    /* ==================================================
+       TARJETA DE INVITACIÓN
+       ================================================== */
 
     .invitation {
 
       position: relative;
 
       width:
+
         min(
           100vw,
           760px
         );
 
-      aspect-ratio: 2 / 3;
+      aspect-ratio:
+        2 / 3;
 
       min-height: 580px;
 
@@ -463,14 +691,21 @@
 
       isolation: isolate;
 
+
       background:
+
         linear-gradient(
+
           145deg,
+
           #fffaf5,
+
           #faf1e9
+
         );
 
     }
+
 
 
     /* textura perla */
@@ -489,27 +724,148 @@
 
       opacity: .18;
 
+
       background-image:
 
         radial-gradient(
-          circle at 30% 20%,
-          white 0,
-          transparent 35%
+
+          circle
+          at 30% 20%,
+
+          white
+          0,
+
+          transparent
+          36%
+
         ),
 
         radial-gradient(
-          circle at 75% 65%,
-          #f7dfe2 0,
-          transparent 40%
+
+          circle
+          at 75% 65%,
+
+          #f7dfe2
+          0,
+
+          transparent
+          42%
+
         );
 
     }
 
 
 
-    /* ==============================
+    /* ==================================================
+       ZONA CENTRAL PROTEGIDA
+
+       ESTA ES LA PARTE IMPORTANTE:
+       evita que pirata/sirena interfieran
+       con toda la información.
+       ================================================== */
+
+    .invitation::after {
+
+      content: "";
+
+      position: absolute;
+
+      z-index: 4;
+
+      top: 5%;
+
+      bottom: 7%;
+
+      left: 50%;
+
+      transform:
+        translateX(-50%);
+
+      width: 68%;
+
+      pointer-events: none;
+
+
+      background:
+
+        linear-gradient(
+
+          90deg,
+
+          rgba(
+            255,
+            250,
+            245,
+            0
+          )
+          0%,
+
+          rgba(
+            255,
+            250,
+            245,
+            .78
+          )
+          8%,
+
+          rgba(
+            255,
+            250,
+            245,
+            .96
+          )
+          19%,
+
+          rgba(
+            255,
+            250,
+            245,
+            .98
+          )
+          30%,
+
+          rgba(
+            255,
+            250,
+            245,
+            .98
+          )
+          70%,
+
+          rgba(
+            255,
+            250,
+            245,
+            .96
+          )
+          81%,
+
+          rgba(
+            255,
+            250,
+            245,
+            .78
+          )
+          92%,
+
+          rgba(
+            255,
+            250,
+            245,
+            0
+          )
+          100%
+
+        );
+
+    }
+
+
+
+    /* ==================================================
        PIRATA
-       ============================== */
+       ================================================== */
 
     .pirate-wrapper {
 
@@ -521,19 +877,21 @@
 
       bottom: -1%;
 
-      width: 64%;
+      width: 48%;
 
       transform-origin:
-        47%
-        70%;
+        46%
+        73%;
+
+      pointer-events: none;
+
 
       animation:
+
         pirateRock
         6s
         ease-in-out
         infinite;
-
-      pointer-events: none;
 
     }
 
@@ -542,13 +900,26 @@
 
       width: 100%;
 
+      height: auto;
+
       filter:
+
         drop-shadow(
-          0 7px 4px
-          rgba(110,88,70,.05)
+
+          0
+          7px
+          4px
+          rgba(
+            110,
+            88,
+            70,
+            .035
+          )
+
         );
 
     }
+
 
 
     @keyframes pirateRock {
@@ -557,16 +928,21 @@
       100% {
 
         transform:
-          translateY(0)
-          rotate(-.45deg);
+
+          translateY(1px)
+
+          rotate(-.32deg);
 
       }
+
 
       50% {
 
         transform:
-          translateY(-7px)
-          rotate(.8deg);
+
+          translateY(-4px)
+
+          rotate(.42deg);
 
       }
 
@@ -574,9 +950,10 @@
 
 
 
-    /* ==============================
+
+    /* ==================================================
        SIRENA
-       ============================== */
+       ================================================== */
 
     .mermaid-wrapper {
 
@@ -588,19 +965,21 @@
 
       bottom: -1%;
 
-      width: 63%;
+      width: 46%;
 
       transform-origin:
-        57%
-        72%;
+        58%
+        73%;
+
+      pointer-events: none;
+
 
       animation:
+
         mermaidMove
         6.5s
         ease-in-out
         infinite;
-
-      pointer-events: none;
 
     }
 
@@ -609,13 +988,26 @@
 
       width: 100%;
 
+      height: auto;
+
       filter:
+
         drop-shadow(
-          0 7px 4px
-          rgba(170,119,145,.04)
+
+          0
+          7px
+          4px
+          rgba(
+            170,
+            119,
+            145,
+            .03
+          )
+
         );
 
     }
+
 
 
     @keyframes mermaidMove {
@@ -624,18 +1016,25 @@
       100% {
 
         transform:
-          translateY(2px)
-          rotate(.25deg)
+
+          translateY(1px)
+
+          rotate(.15deg)
+
           skewX(0deg);
 
       }
 
+
       50% {
 
         transform:
-          translateY(-5px)
-          rotate(-.45deg)
-          skewX(.6deg);
+
+          translateY(-4px)
+
+          rotate(-.30deg)
+
+          skewX(.25deg);
 
       }
 
@@ -643,143 +1042,19 @@
 
 
 
-    /* ==============================
-       INFORMACIÓN CENTRAL
+    /* ==================================================
+       BURBUJAS DE LA INVITACIÓN
 
-       Toda la información de nombres,
-       fecha, hora, lugar y botones
-       viene en esta imagen.
-       ============================== */
-
-    .information-layer {
-
-      position: absolute;
-
-      z-index: 5;
-
-      inset: 0;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      pointer-events: none;
-
-    }
-
-
-    .information-layer img {
-
-      width: 100%;
-      height: 100%;
-
-      object-fit: contain;
-
-    }
-
-
-
-    /* ==============================
-       ZONAS CLICABLES
-       ============================== */
-
-    .click-area {
-
-      position: absolute;
-
-      z-index: 20;
-
-      display: block;
-
-      cursor: pointer;
-
-      background:
-        rgba(255,255,255,0);
-
-      border: none;
-
-      text-decoration: none;
-
-      -webkit-tap-highlight-color:
-        transparent;
-
-    }
-
-
-    /* PLAZA TRIBECA / LUGAR */
-
-    .map-area {
-
-      left: 25%;
-
-      top: 78%;
-
-      width: 50%;
-
-      height: 8%;
-
-    }
-
-
-    /* CONFIRMAR */
-
-    .confirm-area {
-
-      left: 4.5%;
-
-      top: 88.1%;
-
-      width: 47%;
-
-      height: 8%;
-
-      border-radius: 100px;
-
-    }
-
-
-    /* PREGUNTAS */
-
-    .questions-area {
-
-      right: 4.5%;
-
-      top: 88.1%;
-
-      width: 42%;
-
-      height: 8%;
-
-      border-radius: 100px;
-
-    }
-
-
-    /* efecto al tocar */
-
-    .click-area:active {
-
-      background:
-        rgba(255,255,255,.08);
-
-      transform:
-        scale(.98);
-
-    }
-
-
-
-    /* ==============================
-       BURBUJAS INVITACIÓN
-       ============================== */
+       Van por detrás del texto.
+       ================================================== */
 
     #invitationBubbles {
 
       position: absolute;
 
-      z-index: 3;
-
       inset: 0;
+
+      z-index: 3;
 
       overflow: hidden;
 
@@ -789,49 +1064,146 @@
 
 
 
-    /* ==============================
-       TRANSICIÓN ENTRE PANTALLAS
-       ============================== */
 
-    .transition-wave {
+    /* ==================================================
+       INFORMACIÓN CENTRAL
+       SIEMPRE POR ENCIMA
+       ================================================== */
+
+    .information-layer {
 
       position: absolute;
 
-      z-index: 30;
+      z-index: 10;
 
-      bottom: -1px;
-
-      left: 50%;
-
-      width: 60px;
-      height: 30px;
-
-      transform:
-        translateX(-50%);
-
-      border-radius:
-        50%
-        50%
-        0
-        0;
-
-      background: #fffaf5;
+      inset: 0;
 
       display: flex;
+
       justify-content: center;
+
       align-items: center;
 
-      color: #65757d;
-
-      font-size: 24px;
+      pointer-events: none;
 
     }
 
 
 
-    /* ==============================
-       DESKTOP
-       ============================== */
+    .information-layer img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: contain;
+
+    }
+
+
+
+
+    /* ==================================================
+       ÁREAS CLICABLES
+       ================================================== */
+
+    .click-area {
+
+      position: absolute;
+
+      z-index: 30;
+
+      display: block;
+
+      background: transparent;
+
+      border: none;
+
+      cursor: pointer;
+
+      text-decoration: none;
+
+      -webkit-tap-highlight-color:
+        transparent;
+
+    }
+
+
+
+    /* ubicación */
+
+    .map-area {
+
+      left: 28%;
+
+      top: 75%;
+
+      width: 44%;
+
+      height: 8%;
+
+    }
+
+
+
+    /* confirmar asistencia */
+
+    .confirm-area {
+
+      left: 5%;
+
+      top: 87%;
+
+      width: 47%;
+
+      height: 9%;
+
+      border-radius: 100px;
+
+    }
+
+
+
+    /* preguntas */
+
+    .questions-area {
+
+      right: 5%;
+
+      top: 87%;
+
+      width: 42%;
+
+      height: 9%;
+
+      border-radius: 100px;
+
+    }
+
+
+
+    .click-area:active {
+
+      transform:
+        scale(.985);
+
+      background:
+
+        rgba(
+          255,
+          255,
+          255,
+          .06
+        );
+
+    }
+
+
+
+
+    /* ==================================================
+       COMPUTADORA
+       ================================================== */
 
     @media
     (min-width: 850px) {
@@ -839,6 +1211,7 @@
       .invitation-section {
 
         padding:
+
           40px
           0
           70px;
@@ -848,10 +1221,11 @@
 
       .invitation {
 
-        border-radius:
-          6px;
+        border-radius: 5px;
+
 
         box-shadow:
+
           0
           25px
           80px
@@ -859,7 +1233,7 @@
             117,
             91,
             76,
-            .10
+            .09
           );
 
       }
@@ -868,16 +1242,65 @@
 
 
 
-    /* ==============================
+
+    /* ==================================================
+       CELULARES PEQUEÑOS
+       ================================================== */
+
+    @media
+    (max-width: 500px) {
+
+      .pirate-wrapper {
+
+        left: -15%;
+
+        width: 50%;
+
+      }
+
+
+      .mermaid-wrapper {
+
+        right: -15%;
+
+        width: 48%;
+
+      }
+
+
+      .invitation::after {
+
+        width: 70%;
+
+      }
+
+
+      .ocean-title {
+
+        font-size: 19px;
+
+        letter-spacing: 6px;
+
+      }
+
+    }
+
+
+
+
+    /* ==================================================
        ACCESIBILIDAD
-       ============================== */
+       ================================================== */
 
     @media
     (prefers-reduced-motion: reduce) {
 
       html {
+
         scroll-behavior: auto;
+
       }
+
 
       *,
       *::before,
@@ -893,6 +1316,8 @@
 
     }
 
+
+
   </style>
 
 </head>
@@ -902,48 +1327,73 @@
 <body>
 
 
-  <!-- ========================================
+
+  <!-- ==================================================
        PRIMERA PANTALLA
-       ======================================== -->
+       ================================================== -->
 
   <section
+
     class="ocean-cover"
+
     id="ocean"
+
   >
 
 
-    <!-- burbujas -->
+
+    <!-- Burbujas -->
 
     <div id="oceanBubbles"></div>
 
 
+
+    <!-- Texto central -->
+
     <div class="ocean-center">
 
+
       <h1 class="ocean-title">
+
         UNDER THE SEA
+
       </h1>
 
+
       <div class="ocean-wave">
+
         〰
+
       </div>
 
+
       <button
+
         class="scroll-button"
+
         id="scrollButton"
+
         aria-label="Ver invitación"
+
       >
+
         ↓
+
       </button>
 
+
     </div>
+
 
 
     <div
-      class="transition-wave"
+
+      class="transition-circle"
+
       aria-hidden="true"
-    >
-      ↓
-    </div>
+
+    ></div>
+
 
 
   </section>
@@ -951,69 +1401,108 @@
 
 
 
-  <!-- ========================================
-       INVITACIÓN
-       ======================================== -->
+
+  <!-- ==================================================
+       SEGUNDA PANTALLA
+       ================================================== -->
 
   <section
+
     class="invitation-section"
+
     id="invitationSection"
+
   >
+
 
 
     <div class="invitation">
 
 
-      <!-- PIRATA -->
+
+      <!-- ==============================================
+           PIRATA + OLAS
+           ============================================== -->
 
       <div class="pirate-wrapper">
 
+
         <img
+
           src="pirata.png"
+
           class="pirate"
+
           alt=""
+
         >
+
 
       </div>
 
 
 
-      <!-- SIRENA -->
+
+
+      <!-- ==============================================
+           SIRENA + OLAS
+           ============================================== -->
 
       <div class="mermaid-wrapper">
 
+
         <img
+
           src="sirena.png"
+
           class="mermaid"
+
           alt=""
+
         >
+
 
       </div>
 
 
 
-      <!-- BURBUJAS QUE SALEN DESDE ABAJO -->
+
+
+      <!-- ==============================================
+           BURBUJAS
+           ============================================== -->
 
       <div id="invitationBubbles"></div>
 
 
 
-      <!-- INFORMACIÓN CENTRAL -->
+
+
+      <!-- ==============================================
+           INFORMACIÓN
+           ============================================== -->
 
       <div class="information-layer">
 
+
         <img
+
           src="contenido-invitacion.png"
+
           alt="Invitación Under The Sea de Luca y Olivia"
+
         >
+
 
       </div>
 
 
 
-      <!-- ====================================
-           UBICACIÓN
-           ==================================== -->
+
+
+      <!-- ==============================================
+           GOOGLE MAPS
+           ============================================== -->
 
       <a
 
@@ -1025,15 +1514,17 @@
 
         rel="noopener noreferrer"
 
-        aria-label="Ver ubicación Plaza Tribeca en Google Maps"
+        aria-label="Abrir Plaza Tribeca en Google Maps"
 
       ></a>
 
 
 
-      <!-- ====================================
-           CONFIRMA ASISTENCIA
-           ==================================== -->
+
+
+      <!-- ==============================================
+           CONFIRMAR ASISTENCIA
+           ============================================== -->
 
       <a
 
@@ -1049,9 +1540,11 @@
 
 
 
-      <!-- ====================================
+
+
+      <!-- ==============================================
            PREGUNTAS
-           ==================================== -->
+           ============================================== -->
 
       <a
 
@@ -1061,9 +1554,10 @@
 
         href="#"
 
-        aria-label="Preguntas por WhatsApp"
+        aria-label="Enviar preguntas por WhatsApp"
 
       ></a>
+
 
 
     </div>
@@ -1074,22 +1568,25 @@
 
 
 
+
   <script>
 
 
-    /* ========================================
-       CONFIGURACIÓN
-       ======================================== */
+    /* ==================================================
+       WHATSAPP
+       ================================================== */
 
 
     const whatsappNumber =
       "529987399674";
 
 
+
     const confirmMessage =
 `Hola Airela
 Confirmo mi asistencia al evento “Under The Sea”
 Mi nombre es:`;
+
 
 
     const questionsMessage =
@@ -1100,206 +1597,341 @@ Tengo preguntas sobre el evento “Under The Sea”`;
 
 
 
-    /* ========================================
-       BOTÓN CONFIRMAR
-       ======================================== */
+    /* ==================================================
+       CONFIRMAR ASISTENCIA
+       ================================================== */
 
 
     document
-      .getElementById("confirmButton")
+      .getElementById(
+        "confirmButton"
+      )
       .addEventListener(
+
         "click",
+
         function(event) {
+
 
           event.preventDefault();
 
+
           const whatsappURL =
+
             "https://wa.me/"
-            + whatsappNumber
-            + "?text="
-            + encodeURIComponent(
-                confirmMessage
-              );
+            +
+            whatsappNumber
+            +
+            "?text="
+            +
+            encodeURIComponent(
+              confirmMessage
+            );
+
 
           window.open(
+
             whatsappURL,
+
             "_blank"
+
           );
 
+
         }
+
       );
 
 
 
 
 
-    /* ========================================
-       BOTÓN PREGUNTAS
-       ======================================== */
+    /* ==================================================
+       PREGUNTAS
+       ================================================== */
 
 
     document
-      .getElementById("questionsButton")
+      .getElementById(
+        "questionsButton"
+      )
       .addEventListener(
+
         "click",
+
         function(event) {
+
 
           event.preventDefault();
 
+
           const whatsappURL =
+
             "https://wa.me/"
-            + whatsappNumber
-            + "?text="
-            + encodeURIComponent(
-                questionsMessage
-              );
+            +
+            whatsappNumber
+            +
+            "?text="
+            +
+            encodeURIComponent(
+              questionsMessage
+            );
+
 
           window.open(
+
             whatsappURL,
+
             "_blank"
+
           );
 
+
         }
+
       );
 
 
 
 
 
-    /* ========================================
-       DESLIZAR A INVITACIÓN
-       ======================================== */
+    /* ==================================================
+       FLECHA → INVITACIÓN
+       ================================================== */
 
 
     document
-      .getElementById("scrollButton")
+      .getElementById(
+        "scrollButton"
+      )
       .addEventListener(
+
         "click",
+
         function() {
+
 
           document
             .getElementById(
               "invitationSection"
             )
             .scrollIntoView({
-              behavior: "smooth",
-              block: "start"
+
+              behavior:
+                "smooth",
+
+              block:
+                "start"
+
             });
 
+
         }
+
       );
 
 
 
 
 
-    /* ========================================
+    /* ==================================================
        CREAR BURBUJAS
-       ======================================== */
+       ================================================== */
 
 
     function createBubbles(
+
       containerId,
+
       quantity
+
     ) {
 
+
       const container =
-        document.getElementById(
-          containerId
-        );
 
-
-      for (
-        let i = 0;
-        i < quantity;
-        i++
-      ) {
-
-        const bubble =
-          document.createElement(
-            "span"
+        document
+          .getElementById(
+            containerId
           );
 
 
-        bubble.classList.add(
-          "bubble"
-        );
+
+      for (
+
+        let i = 0;
+
+        i < quantity;
+
+        i++
+
+      ) {
+
+
+        const bubble =
+
+          document
+            .createElement(
+              "span"
+            );
+
+
+
+        bubble
+          .classList
+          .add(
+            "bubble"
+          );
+
 
 
         const size =
-          Math.random() * 27 + 8;
+
+          Math.random()
+          *
+          26
+          +
+          8;
+
 
 
         const left =
-          Math.random() * 96;
+
+          Math.random()
+          *
+          96;
+
 
 
         const duration =
-          Math.random() * 8 + 9;
+
+          Math.random()
+          *
+          8
+          +
+          9;
+
 
 
         const delay =
-          Math.random() * -18;
+
+          Math.random()
+          *
+          -18;
+
 
 
         const drift =
-          Math.random() * 45 - 22;
+
+          Math.random()
+          *
+          45
+          -
+          22;
 
 
 
-        bubble.style.setProperty(
-          "--size",
-          size + "px"
-        );
+        bubble
+          .style
+          .setProperty(
+
+            "--size",
+
+            size + "px"
+
+          );
 
 
-        bubble.style.setProperty(
-          "--left",
-          left + "%"
-        );
+
+        bubble
+          .style
+          .setProperty(
+
+            "--left",
+
+            left + "%"
+
+          );
 
 
-        bubble.style.setProperty(
-          "--duration",
-          duration + "s"
-        );
+
+        bubble
+          .style
+          .setProperty(
+
+            "--duration",
+
+            duration + "s"
+
+          );
 
 
-        bubble.style.setProperty(
-          "--delay",
-          delay + "s"
-        );
+
+        bubble
+          .style
+          .setProperty(
+
+            "--delay",
+
+            delay + "s"
+
+          );
 
 
-        bubble.style.setProperty(
-          "--drift",
-          drift + "px"
-        );
+
+        bubble
+          .style
+          .setProperty(
+
+            "--drift",
+
+            drift + "px"
+
+          );
 
 
-        container.appendChild(
-          bubble
-        );
+
+        container
+          .appendChild(
+            bubble
+          );
+
 
       }
+
 
     }
 
 
 
+
+
+    /* Burbujas portada */
+
     createBubbles(
+
       "oceanBubbles",
+
       22
+
     );
 
+
+
+    /* Burbujas invitación */
 
     createBubbles(
+
       "invitationBubbles",
-      18
+
+      15
+
     );
+
 
 
   </script>
+
 
 
 </body>
