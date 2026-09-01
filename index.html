@@ -1,236 +1,106 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Under The Sea | Luca & Olivia</title>
-  <meta name="description" content="Invitación Under The Sea — Luca & Olivia" />
-
-  <!-- Portada al compartir el enlace -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="UNDER THE SEA | Luca & Olivia" />
-  <meta property="og:description" content="Te invitamos a celebrar con Luca & Olivia" />
-  <meta property="og:image" content="portada-link.jpg" />
-  <meta property="og:image:alt" content="Under The Sea — Luca & Olivia" />
-
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="UNDER THE SEA | Luca & Olivia" />
-  <meta name="twitter:description" content="Te invitamos a celebrar con Luca & Olivia" />
-  <meta name="twitter:image" content="portada-link.jpg" />
+  <meta name="description" content="Invitación Under The Sea — Luca & Olivia">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="UNDER THE SEA | Luca & Olivia">
+  <meta property="og:description" content="Te invitamos a celebrar con Luca & Olivia">
+  <meta property="og:image" content="portada-link.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="portada-link.jpg">
 
   <style>
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background: #d9f2fb;
-      font-family: Arial, Helvetica, sans-serif;
-      overflow-x: hidden;
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#d9f2fb;font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+
+    .hero{
+      position:relative;min-height:100svh;width:100%;display:grid;place-items:center;overflow:hidden;
+      background:linear-gradient(rgba(0,0,0,.03),rgba(0,0,0,.03)),url("portada-mar.jpg") center/cover no-repeat
     }
 
-    /* PORTADA INICIAL */
-    .hero {
-      position: relative;
-      min-height: 100svh;
-      width: 100%;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      background:
-        linear-gradient(rgba(0,0,0,.03), rgba(0,0,0,.03)),
-        url("portada-mar.jpg") center center / cover no-repeat;
+    .hero-title{
+      position:relative;z-index:3;color:#fff;letter-spacing:.28em;font-size:clamp(28px,6vw,64px);
+      font-weight:400;text-align:center;text-shadow:0 2px 14px rgba(70,140,170,.22);
+      padding-left:.28em;margin:0
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,.05),
-        rgba(255,255,255,.02)
-      );
-      pointer-events: none;
+    .scroll-cue{
+      position:absolute;z-index:4;bottom:28px;left:50%;transform:translateX(-50%);
+      width:58px;height:58px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.72);
+      border-radius:50%;background:rgba(255,255,255,.10);backdrop-filter:blur(5px);
+      color:#fff;font-size:31px;cursor:pointer;animation:floatArrow 1.6s ease-in-out infinite
     }
 
-    .hero-title {
-      position: relative;
-      z-index: 3;
-      color: #fff;
-      letter-spacing: .28em;
-      font-size: clamp(28px, 6vw, 64px);
-      font-weight: 400;
-      text-align: center;
-      text-shadow: 0 2px 14px rgba(70,140,170,.22);
-      padding-left: .28em;
-      margin: 0;
+    @keyframes floatArrow{
+      0%,100%{transform:translate(-50%,0);opacity:.72}
+      50%{transform:translate(-50%,10px);opacity:1}
     }
 
-    .scroll-cue {
-      position: absolute;
-      z-index: 4;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 58px;
-      height: 58px;
-      display: grid;
-      place-items: center;
-      border: 1px solid rgba(255,255,255,.72);
-      border-radius: 50%;
-      background: rgba(255,255,255,.10);
-      backdrop-filter: blur(5px);
-      -webkit-backdrop-filter: blur(5px);
-      color: rgba(255,255,255,.98);
-      font-size: 31px;
-      line-height: 1;
-      cursor: pointer;
-      animation: floatArrow 1.6s ease-in-out infinite;
-      user-select: none;
-      box-shadow: 0 8px 30px rgba(90,160,190,.13);
-      -webkit-tap-highlight-color: transparent;
+    .bubbles{position:fixed;inset:0;z-index:10;pointer-events:none;overflow:hidden}
+    .bubble{
+      position:absolute;bottom:-100px;border:1.5px solid rgba(255,255,255,.78);border-radius:50%;
+      background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.78) 0 7%,rgba(255,255,255,.2) 15%,rgba(255,255,255,.06) 45%,rgba(255,255,255,.17) 70%,rgba(255,255,255,.02) 100%);
+      box-shadow:inset 0 0 12px rgba(255,255,255,.35),0 0 10px rgba(255,255,255,.14);
+      animation:rise linear forwards;opacity:0
     }
 
-    .scroll-cue:hover {
-      background: rgba(255,255,255,.20);
+    @keyframes rise{
+      0%{transform:translateY(0) scale(.85);opacity:0}
+      12%{opacity:.85}
+      100%{transform:translateY(-120vh) scale(1.12);opacity:0}
     }
 
-    .scroll-cue span {
-      transform: translateY(-3px);
+    body.is-transitioning .invitation-section{animation:invitationReveal 1.15s ease both}
+    @keyframes invitationReveal{
+      from{opacity:.45;transform:translateY(22px)}
+      to{opacity:1;transform:translateY(0)}
     }
 
-    @keyframes floatArrow {
-      0%,100% { transform: translate(-50%, 0); opacity: .72; }
-      50% { transform: translate(-50%, 10px); opacity: 1; }
+    .invitation-section{
+      position:relative;width:100%;min-height:100svh;display:flex;justify-content:center;
+      align-items:flex-start;background:#f8efe9
     }
 
-    /* BURBUJAS */
-    .bubbles {
-      position: fixed;
-      inset: 0;
-      z-index: 10;
-      pointer-events: none;
-      overflow: hidden;
+    .invitation-wrap{position:relative;width:min(100%,1048px);margin:0 auto;line-height:0}
+    .invitation-wrap img{width:100%;height:auto;display:block}
+
+    .hotspot{
+      position:absolute;z-index:20;display:block;cursor:pointer;background:transparent;
+      -webkit-tap-highlight-color:transparent
     }
 
-    .bubble {
-      position: absolute;
-      bottom: -100px;
-      border: 1.5px solid rgba(255,255,255,.75);
-      border-radius: 50%;
-      background:
-        radial-gradient(circle at 30% 25%,
-          rgba(255,255,255,.75) 0 7%,
-          rgba(255,255,255,.18) 15%,
-          rgba(255,255,255,.06) 45%,
-          rgba(255,255,255,.16) 70%,
-          rgba(255,255,255,.02) 100%);
-      box-shadow:
-        inset 0 0 12px rgba(255,255,255,.35),
-        0 0 10px rgba(255,255,255,.14);
-      animation: rise linear forwards;
-      opacity: 0;
+    /* ZONAS CLICABLES AJUSTADAS A LA NUEVA IMAGEN */
+    .map-link{
+      left:37.8%;
+      top:75.2%;
+      width:25.5%;
+      height:4.1%;
+      border-radius:16px
     }
 
-    @keyframes rise {
-      0%   { transform: translateY(0) scale(.85); opacity: 0; }
-      12%  { opacity: .8; }
-      100% { transform: translateY(-120vh) scale(1.12); opacity: 0; }
+    .rsvp-link{
+      left:27.1%;
+      top:83.7%;
+      width:27.4%;
+      height:4.8%;
+      border-radius:999px
     }
 
-    /* TRANSICIÓN AL BAJAR */
-    body.is-transitioning .hero {
-      filter: brightness(1.03) saturate(1.02);
+    .questions-link{
+      left:54.6%;
+      top:83.7%;
+      width:18.1%;
+      height:4.8%;
+      border-radius:999px
     }
 
-    body.is-transitioning .invitation-section {
-      animation: invitationReveal 1.15s ease both;
-    }
-
-    @keyframes invitationReveal {
-      from {
-        opacity: .45;
-        transform: translateY(22px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* INVITACIÓN */
-    .invitation-section {
-      position: relative;
-      width: 100%;
-      min-height: 100svh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      background: #f8efe9;
-    }
-
-    .invitation-wrap {
-      position: relative;
-      width: min(100%, 1102px);
-      margin: 0 auto;
-      line-height: 0;
-    }
-
-    .invitation-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    /* ZONAS CLICABLES SOBRE LA IMAGEN */
-    .hotspot {
-      position: absolute;
-      z-index: 6;
-      display: block;
-      border-radius: 999px;
-      cursor: pointer;
-      background: rgba(255,255,255,0);
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    /* Ajustadas a la invitación vertical */
-    .map-link {
-      left: 34%;
-      top: 81.5%;
-      width: 32%;
-      height: 5.8%;
-    }
-
-    .rsvp-link {
-      left: 27.5%;
-      top: 91.0%;
-      width: 27%;
-      height: 5.6%;
-    }
-
-    .questions-link {
-      left: 55%;
-      top: 91.0%;
-      width: 19%;
-      height: 5.6%;
-    }
-
-    /* Accesibilidad: muestra un borde solo al navegar con teclado */
-    .hotspot:focus-visible {
-      outline: 3px solid rgba(255,255,255,.95);
-      outline-offset: 2px;
-    }
-
-    @media (max-width: 600px) {
-      .hero-title {
-        letter-spacing: .20em;
-        padding-left: .20em;
-      }
-
-      .scroll-cue {
-        bottom: 20px;
-      }
+    @media(max-width:600px){
+      .hero-title{letter-spacing:.20em;padding-left:.20em}
+      .scroll-cue{bottom:20px}
     }
   </style>
 </head>
@@ -240,126 +110,81 @@
 
   <section class="hero" id="inicio">
     <h1 class="hero-title">UNDER THE SEA</h1>
-    <button class="scroll-cue" id="scrollButton" aria-label="Bajar a la invitación">
-      <span>⌄</span>
-    </button>
+    <button class="scroll-cue" id="scrollButton" aria-label="Bajar a la invitación" type="button">⌄</button>
   </section>
 
   <section class="invitation-section" id="invitacion">
     <div class="invitation-wrap">
-      <img
-        src="invitacion.jpg"
-        alt="Invitación Under The Sea de Luca y Olivia"
-      />
+      <img src="invitacion.jpg" alt="Invitación Under The Sea de Luca y Olivia">
 
-      <!-- PLAZA TRIBECA -->
-      <a
-        class="hotspot map-link"
-        href="https://maps.app.goo.gl/8p8QFPSe8oT6XA1M9"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Abrir ubicación de Plaza Tribeca en Google Maps"
-      ></a>
+      <a class="hotspot map-link"
+         href="https://maps.app.goo.gl/8p8QFPSe8oT6XA1M9"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Abrir Plaza Tribeca en Google Maps"></a>
 
-      <!-- CONFIRMAR ASISTENCIA -->
-      <a
-        class="hotspot rsvp-link"
-        href="https://wa.me/529987399674?text=Hola%20AIRELA%0AConfirmo%20mi%20asistencia%20al%20evento%20%22Under%20The%20Sea%22%0AMi%20nombre%20es%3A"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Confirmar asistencia por WhatsApp"
-      ></a>
+      <a class="hotspot rsvp-link"
+         href="https://wa.me/529987399674?text=Hola%20AIRELA%0AConfirmo%20mi%20asistencia%20al%20evento%20%22Under%20The%20Sea%22%0AMi%20nombre%20es%3A"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Confirmar asistencia por WhatsApp"></a>
 
-      <!-- PREGUNTAS -->
-      <a
-        class="hotspot questions-link"
-        href="https://wa.me/529987399674?text=Hola%20AIRELA%0ATengo%20preguntas%20sobre%20el%20evento%20%22Under%20The%20Sea%22"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Enviar preguntas por WhatsApp"
-      ></a>
+      <a class="hotspot questions-link"
+         href="https://wa.me/529987399674?text=Hola%20AIRELA%0ATengo%20preguntas%20sobre%20el%20evento%20%22Under%20The%20Sea%22"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Enviar preguntas por WhatsApp"></a>
     </div>
   </section>
 
   <script>
-    const bubbleLayer = document.getElementById("bubbles");
-    let bubblesStarted = false;
-    let bubbleTimer = null;
+    const bubbleLayer=document.getElementById("bubbles");
+    const scrollButton=document.getElementById("scrollButton");
+    const invitationSection=document.getElementById("invitacion");
+    let bubblesStarted=false,bubbleTimer=null;
 
-    function createBubble() {
-      const bubble = document.createElement("span");
-      bubble.className = "bubble";
-
-      const size = Math.random() * 34 + 10;
-      bubble.style.width = `${size}px`;
-      bubble.style.height = `${size}px`;
-      bubble.style.left = `${Math.random() * 100}%`;
-      bubble.style.animationDuration = `${Math.random() * 4 + 5}s`;
-
+    function createBubble(){
+      const bubble=document.createElement("span");
+      bubble.className="bubble";
+      const size=Math.random()*38+10;
+      bubble.style.width=size+"px";
+      bubble.style.height=size+"px";
+      bubble.style.left=Math.random()*100+"%";
+      bubble.style.animationDuration=(Math.random()*4+5)+"s";
       bubbleLayer.appendChild(bubble);
-
-      setTimeout(() => bubble.remove(), 9500);
+      setTimeout(()=>bubble.remove(),9500);
     }
 
-    function startBubbles() {
-      if (bubblesStarted) return;
-      bubblesStarted = true;
-
-      for (let i = 0; i < 8; i++) {
-        setTimeout(createBubble, i * 150);
-      }
-
-      bubbleTimer = setInterval(createBubble, 430);
+    function startBubbles(){
+      if(bubblesStarted)return;
+      bubblesStarted=true;
+      for(let i=0;i<10;i++)setTimeout(createBubble,i*120);
+      bubbleTimer=setInterval(createBubble,350);
     }
 
-    function stopBubblesLater() {
-      setTimeout(() => {
-        if (bubbleTimer) {
-          clearInterval(bubbleTimer);
-          bubbleTimer = null;
-        }
-      }, 9000);
+    function bubbleBurst(amount=52){
+      for(let i=0;i<amount;i++)setTimeout(createBubble,i*38);
     }
 
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 20) {
-        startBubbles();
-        stopBubblesLater();
-      }
-    }, { passive: true });
-
-    window.addEventListener("touchmove", () => {
-      startBubbles();
-      stopBubblesLater();
-    }, { passive: true });
-
-    function bubbleBurst(amount = 34) {
-      for (let i = 0; i < amount; i++) {
-        setTimeout(createBubble, i * 45);
-      }
+    function stopBubblesLater(){
+      setTimeout(()=>{
+        if(bubbleTimer){clearInterval(bubbleTimer);bubbleTimer=null}
+      },9000);
     }
 
-    const scrollButton = document.getElementById("scrollButton");
-    const invitationSection = document.getElementById("invitacion");
-
-    scrollButton.addEventListener("click", () => {
+    scrollButton.addEventListener("click",()=>{
       document.body.classList.add("is-transitioning");
-
-      // Muchísimas más burbujas durante la transición
       startBubbles();
-      bubbleBurst(42);
-
-      invitationSection.scrollIntoView({
-        behavior: "smooth",
-        block: "start"
-      });
-
-      setTimeout(() => {
-        document.body.classList.remove("is-transitioning");
-      }, 1500);
-
+      bubbleBurst(52);
+      invitationSection.scrollIntoView({behavior:"smooth",block:"start"});
+      setTimeout(()=>document.body.classList.remove("is-transitioning"),1500);
       stopBubblesLater();
     });
+
+    window.addEventListener("scroll",()=>{
+      if(window.scrollY>20){startBubbles();stopBubblesLater()}
+    },{passive:true});
+
+    window.addEventListener("touchmove",()=>{
+      startBubbles();stopBubblesLater()
+    },{passive:true});
   </script>
 </body>
 </html>
