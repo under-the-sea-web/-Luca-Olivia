@@ -23,10 +23,10 @@
   >
 
 
-  <!-- ==========================================
+  <!-- =========================================
        PORTADA DEL LINK
-       CAMBIAR TU-USUARIO CUANDO PUBLIQUES
-       ========================================== -->
+       CAMBIA TU-USUARIO AL PUBLICAR EN GITHUB
+       ========================================= -->
 
   <meta
     property="og:title"
@@ -53,41 +53,24 @@
     content="https://TU-USUARIO.github.io/under-the-sea/portada-link.jpg"
   >
 
-  <meta
-    property="og:image:width"
-    content="1024"
-  >
-
-  <meta
-    property="og:image:height"
-    content="1536"
-  >
-
 
 
   <style>
 
     /* ==================================================
-       CONFIGURACIÓN GENERAL
+       GENERAL
        ================================================== */
 
     * {
-
       margin: 0;
-
       padding: 0;
-
       box-sizing: border-box;
-
     }
 
 
     html {
-
       scroll-behavior: smooth;
-
       background: #bce5ef;
-
     }
 
 
@@ -102,7 +85,7 @@
         Helvetica,
         sans-serif;
 
-      background: #faf4ee;
+      background: #fbf4ed;
 
     }
 
@@ -110,6 +93,8 @@
     img {
 
       display: block;
+
+      max-width: 100%;
 
       user-select: none;
 
@@ -120,8 +105,7 @@
 
 
     /* ==================================================
-       PRIMERA PANTALLA
-       OCÉANO
+       1. PORTADA OCÉANO
        ================================================== */
 
     .ocean-cover {
@@ -155,7 +139,6 @@
     }
 
 
-
     .ocean-cover::after {
 
       content: "";
@@ -175,9 +158,9 @@
 
           to bottom,
 
-          rgba(255,255,255,.05),
+          rgba(255,255,255,.02),
 
-          rgba(132,206,226,.06)
+          rgba(143,213,230,.05)
 
         );
 
@@ -186,7 +169,7 @@
 
 
     /* ==================================================
-       TEXTO UNDER THE SEA
+       TEXTO PORTADA
        ================================================== */
 
     .ocean-center {
@@ -199,20 +182,20 @@
 
       flex-direction: column;
 
-      align-items: center;
-
       justify-content: center;
+
+      align-items: center;
 
       text-align: center;
 
-      color: white;
-
-      transform: translateY(3vh);
+      transform: translateY(2vh);
 
     }
 
 
     .ocean-title {
+
+      color: white;
 
       font-family:
         "Helvetica Neue",
@@ -221,8 +204,8 @@
 
       font-size:
         clamp(
-          20px,
-          4vw,
+          21px,
+          3vw,
           34px
         );
 
@@ -230,32 +213,20 @@
 
       letter-spacing:
         clamp(
-          6px,
-          2vw,
+          7px,
+          1.5vw,
           15px
         );
 
       margin-left: .5em;
 
-      color:
-        rgba(
-          255,
-          255,
-          255,
-          .97
-        );
 
       text-shadow:
 
         0
         3px
-        14px
-        rgba(
-          71,
-          133,
-          161,
-          .14
-        );
+        15px
+        rgba(72,137,164,.15);
 
     }
 
@@ -265,23 +236,14 @@
 
       margin-top: 18px;
 
-      font-size: 38px;
+      color: white;
 
-      font-weight: 200;
+      font-size: 38px;
 
       line-height: 1;
 
-      color:
-        rgba(
-          255,
-          255,
-          255,
-          .94
-        );
-
       animation:
-
-        oceanWaveMove
+        smallWave
         3s
         ease-in-out
         infinite;
@@ -289,22 +251,15 @@
     }
 
 
-
-    @keyframes oceanWaveMove {
+    @keyframes smallWave {
 
       0%,
       100% {
-
-        transform:
-          translateX(-3px);
-
+        transform: translateX(-3px);
       }
 
       50% {
-
-        transform:
-          translateX(3px);
-
+        transform: translateX(3px);
       }
 
     }
@@ -317,7 +272,7 @@
 
     .scroll-button {
 
-      margin-top: 32px;
+      margin-top: 30px;
 
       width: 54px;
 
@@ -326,15 +281,8 @@
       border-radius: 50%;
 
       border:
-
-        1px
-        solid
-        rgba(
-          255,
-          255,
-          255,
-          .82
-        );
+        1px solid
+        rgba(255,255,255,.8);
 
       display: flex;
 
@@ -344,50 +292,26 @@
 
 
       background:
-
-        rgba(
-          255,
-          255,
-          255,
-          .15
-        );
-
-
-      backdrop-filter:
-
-        blur(6px);
-
-
-      -webkit-backdrop-filter:
-
-        blur(6px);
+        rgba(255,255,255,.15);
 
 
       color: white;
 
       font-size: 27px;
 
-      font-weight: 200;
-
       cursor: pointer;
 
 
-      box-shadow:
+      backdrop-filter:
+        blur(5px);
 
-        0
-        8px
-        30px
-        rgba(
-          57,
-          118,
-          147,
-          .12
-        );
+
+      -webkit-backdrop-filter:
+        blur(5px);
 
 
       animation:
-
-        arrowMove
+        arrowAnimation
         2s
         ease-in-out
         infinite;
@@ -395,22 +319,15 @@
     }
 
 
-
-    @keyframes arrowMove {
+    @keyframes arrowAnimation {
 
       0%,
       100% {
-
-        transform:
-          translateY(0);
-
+        transform: translateY(0);
       }
 
       50% {
-
-        transform:
-          translateY(9px);
-
+        transform: translateY(8px);
       }
 
     }
@@ -418,14 +335,16 @@
 
 
     /* ==================================================
-       BURBUJAS GENERALES
+       BURBUJAS
        ================================================== */
 
     .bubble {
 
       position: absolute;
 
-      bottom: -100px;
+      z-index: 6;
+
+      bottom: -60px;
 
       left:
         var(--left);
@@ -438,76 +357,30 @@
 
       border-radius: 50%;
 
-      z-index: 6;
+      opacity: 0;
 
       pointer-events: none;
 
-      opacity: 0;
-
 
       border:
-
-        1px
-        solid
-        rgba(
-          255,
-          255,
-          255,
-          .65
-        );
+        1px solid
+        rgba(255,255,255,.65);
 
 
       background:
 
         radial-gradient(
 
-          circle
-          at 32% 28%,
+          circle at 32% 28%,
 
-          rgba(
-            255,
-            255,
-            255,
-            .92
-          ),
+          rgba(255,255,255,.95),
 
-          rgba(
-            255,
-            255,
-            255,
-            .22
-          )
-          28%,
+          rgba(255,255,255,.20) 27%,
 
-          rgba(
-            183,
-            223,
-            240,
-            .14
-          )
-          60%,
+          rgba(190,225,240,.12) 60%,
 
-          rgba(
-            255,
-            255,
-            255,
-            .34
-          )
+          rgba(255,255,255,.35)
 
-        );
-
-
-      box-shadow:
-
-        inset
-        1px
-        1px
-        7px
-        rgba(
-          255,
-          255,
-          255,
-          .75
         );
 
 
@@ -522,7 +395,6 @@
     }
 
 
-
     @keyframes riseBubble {
 
       0% {
@@ -530,21 +402,16 @@
         opacity: 0;
 
         transform:
-
-          translate3d(
-            0,
-            0,
-            0
-          )
-
-          scale(.72);
+          translateY(0)
+          translateX(0)
+          scale(.7);
 
       }
 
 
-      10% {
+      12% {
 
-        opacity: .55;
+        opacity: .58;
 
       }
 
@@ -552,13 +419,8 @@
       50% {
 
         transform:
-
-          translate3d(
-            var(--drift),
-            -55vh,
-            0
-          )
-
+          translateY(-55vh)
+          translateX(var(--drift))
           scale(1);
 
       }
@@ -566,7 +428,7 @@
 
       90% {
 
-        opacity: .4;
+        opacity: .42;
 
       }
 
@@ -576,16 +438,13 @@
         opacity: 0;
 
         transform:
-
-          translate3d(
+          translateY(-115vh)
+          translateX(
             calc(
               var(--drift) * -.3
-            ),
-            -115vh,
-            0
+            )
           )
-
-          scale(1.08);
+          scale(1.07);
 
       }
 
@@ -594,42 +453,7 @@
 
 
     /* ==================================================
-       TRANSICIÓN INFERIOR
-       ================================================== */
-
-    .transition-circle {
-
-      position: absolute;
-
-      z-index: 20;
-
-      bottom: -1px;
-
-      left: 50%;
-
-      transform:
-        translateX(-50%);
-
-      width: 55px;
-
-      height: 28px;
-
-      border-radius:
-
-        50%
-        50%
-        0
-        0;
-
-      background: #fffaf5;
-
-    }
-
-
-
-
-    /* ==================================================
-       SEGUNDA PANTALLA
+       2. SECCIÓN INVITACIÓN
        ================================================== */
 
     .invitation-section {
@@ -640,13 +464,16 @@
 
       min-height: 100svh;
 
+      padding:
+        28px
+        18px
+        55px;
+
       display: flex;
 
       justify-content: center;
 
-      align-items: flex-start;
-
-      overflow: hidden;
+      align-items: center;
 
 
       background:
@@ -655,11 +482,9 @@
 
           180deg,
 
-          #fffaf5
-          0%,
+          #fffaf5 0%,
 
-          #faf2ea
-          100%
+          #fbf1e8 100%
 
         );
 
@@ -668,7 +493,9 @@
 
 
     /* ==================================================
-       TARJETA DE INVITACIÓN
+       TARJETA
+
+       AHORA ES MUCHO MÁS ANCHA
        ================================================== */
 
     .invitation {
@@ -676,16 +503,21 @@
       position: relative;
 
       width:
-
         min(
-          100vw,
-          760px
+          96vw,
+          1180px
         );
 
-      aspect-ratio:
-        2 / 3;
 
-      min-height: 580px;
+      /*
+       Antes era 2/3 (muy estrecha).
+
+       Ahora tenemos una composición ancha
+       para dejar laterales independientes.
+      */
+
+      aspect-ratio: 4 / 3;
+
 
       overflow: hidden;
 
@@ -704,11 +536,27 @@
 
         );
 
+
+      border-radius: 4px;
+
+
+      box-shadow:
+
+        0
+        22px
+        70px
+        rgba(
+          116,
+          90,
+          76,
+          .08
+        );
+
     }
 
 
 
-    /* textura perla */
+    /* textura muy sutil */
 
     .invitation::before {
 
@@ -722,34 +570,16 @@
 
       pointer-events: none;
 
-      opacity: .18;
 
-
-      background-image:
+      background:
 
         radial-gradient(
 
-          circle
-          at 30% 20%,
+          circle at 50% 25%,
 
-          white
-          0,
+          rgba(255,255,255,.75),
 
-          transparent
-          36%
-
-        ),
-
-        radial-gradient(
-
-          circle
-          at 75% 65%,
-
-          #f7dfe2
-          0,
-
-          transparent
-          42%
+          transparent 42%
 
         );
 
@@ -758,31 +588,26 @@
 
 
     /* ==================================================
-       ZONA CENTRAL PROTEGIDA
+       CORREDOR CENTRAL
 
-       ESTA ES LA PARTE IMPORTANTE:
-       evita que pirata/sirena interfieran
-       con toda la información.
+       CREA UNA ZONA LIMPIA.
+       LAS ILUSTRACIONES NO PUEDEN INVADIRLA.
        ================================================== */
 
-    .invitation::after {
-
-      content: "";
+    .safe-center {
 
       position: absolute;
 
-      z-index: 4;
+      z-index: 5;
 
-      top: 5%;
+      top: 0;
 
-      bottom: 7%;
+      bottom: 0;
 
-      left: 50%;
+      left: 26%;
 
-      transform:
-        translateX(-50%);
+      right: 26%;
 
-      width: 68%;
 
       pointer-events: none;
 
@@ -793,69 +618,21 @@
 
           90deg,
 
-          rgba(
-            255,
-            250,
-            245,
-            0
-          )
-          0%,
+          rgba(255,250,245,0) 0%,
 
-          rgba(
-            255,
-            250,
-            245,
-            .78
-          )
-          8%,
+          rgba(255,250,245,.90) 5%,
 
-          rgba(
-            255,
-            250,
-            245,
-            .96
-          )
-          19%,
+          rgba(255,250,245,.99) 13%,
 
-          rgba(
-            255,
-            250,
-            245,
-            .98
-          )
-          30%,
+          #fffaf5 23%,
 
-          rgba(
-            255,
-            250,
-            245,
-            .98
-          )
-          70%,
+          #fffaf5 77%,
 
-          rgba(
-            255,
-            250,
-            245,
-            .96
-          )
-          81%,
+          rgba(255,250,245,.99) 87%,
 
-          rgba(
-            255,
-            250,
-            245,
-            .78
-          )
-          92%,
+          rgba(255,250,245,.90) 95%,
 
-          rgba(
-            255,
-            250,
-            245,
-            0
-          )
-          100%
+          rgba(255,250,245,0) 100%
 
         );
 
@@ -864,197 +641,33 @@
 
 
     /* ==================================================
-       PIRATA
+       ZONA PIRATA
+
+       IMPORTANTE:
+       overflow:hidden evita completamente
+       que el barco llegue al contenido.
        ================================================== */
 
     .pirate-wrapper {
 
       position: absolute;
 
-      z-index: 1;
+      z-index: 2;
 
-      left: -12%;
+      left: 0;
 
-      bottom: -1%;
+      top: 0;
 
-      width: 48%;
+      bottom: 0;
 
-      transform-origin:
-        46%
-        73%;
 
-      pointer-events: none;
+      /*
+       SOLO puede ocupar este 26%
+       izquierdo de la invitación.
+      */
 
+      width: 26%;
 
-      animation:
-
-        pirateRock
-        6s
-        ease-in-out
-        infinite;
-
-    }
-
-
-    .pirate {
-
-      width: 100%;
-
-      height: auto;
-
-      filter:
-
-        drop-shadow(
-
-          0
-          7px
-          4px
-          rgba(
-            110,
-            88,
-            70,
-            .035
-          )
-
-        );
-
-    }
-
-
-
-    @keyframes pirateRock {
-
-      0%,
-      100% {
-
-        transform:
-
-          translateY(1px)
-
-          rotate(-.32deg);
-
-      }
-
-
-      50% {
-
-        transform:
-
-          translateY(-4px)
-
-          rotate(.42deg);
-
-      }
-
-    }
-
-
-
-
-    /* ==================================================
-       SIRENA
-       ================================================== */
-
-    .mermaid-wrapper {
-
-      position: absolute;
-
-      z-index: 1;
-
-      right: -12%;
-
-      bottom: -1%;
-
-      width: 46%;
-
-      transform-origin:
-        58%
-        73%;
-
-      pointer-events: none;
-
-
-      animation:
-
-        mermaidMove
-        6.5s
-        ease-in-out
-        infinite;
-
-    }
-
-
-    .mermaid {
-
-      width: 100%;
-
-      height: auto;
-
-      filter:
-
-        drop-shadow(
-
-          0
-          7px
-          4px
-          rgba(
-            170,
-            119,
-            145,
-            .03
-          )
-
-        );
-
-    }
-
-
-
-    @keyframes mermaidMove {
-
-      0%,
-      100% {
-
-        transform:
-
-          translateY(1px)
-
-          rotate(.15deg)
-
-          skewX(0deg);
-
-      }
-
-
-      50% {
-
-        transform:
-
-          translateY(-4px)
-
-          rotate(-.30deg)
-
-          skewX(.25deg);
-
-      }
-
-    }
-
-
-
-    /* ==================================================
-       BURBUJAS DE LA INVITACIÓN
-
-       Van por detrás del texto.
-       ================================================== */
-
-    #invitationBubbles {
-
-      position: absolute;
-
-      inset: 0;
-
-      z-index: 3;
 
       overflow: hidden;
 
@@ -1064,10 +677,206 @@
 
 
 
+    .pirate {
+
+      position: absolute;
+
+
+      /*
+       Hacemos la imagen grande dentro
+       de su propia zona, pero la zona
+       la corta antes del texto.
+      */
+
+      width: 185%;
+
+      max-width: none;
+
+      left: -72%;
+
+      bottom: -1.5%;
+
+
+      transform-origin:
+        60%
+        75%;
+
+
+      animation:
+
+        pirateMovement
+        6s
+        ease-in-out
+        infinite;
+
+
+      filter:
+
+        drop-shadow(
+
+          0
+          5px
+          4px
+          rgba(100,75,60,.035)
+
+        );
+
+    }
+
+
+
+    @keyframes pirateMovement {
+
+      0%,
+      100% {
+
+        transform:
+
+          translateY(2px)
+
+          rotate(-.35deg);
+
+      }
+
+
+      50% {
+
+        transform:
+
+          translateY(-5px)
+
+          rotate(.45deg);
+
+      }
+
+    }
+
+
 
     /* ==================================================
-       INFORMACIÓN CENTRAL
-       SIEMPRE POR ENCIMA
+       ZONA SIRENA
+
+       Igual: jamás entra al centro.
+       ================================================== */
+
+    .mermaid-wrapper {
+
+      position: absolute;
+
+      z-index: 2;
+
+      right: 0;
+
+      top: 0;
+
+      bottom: 0;
+
+
+      width: 26%;
+
+
+      overflow: hidden;
+
+      pointer-events: none;
+
+    }
+
+
+
+    .mermaid {
+
+      position: absolute;
+
+
+      width: 185%;
+
+      max-width: none;
+
+      right: -72%;
+
+      bottom: -1%;
+
+
+      transform-origin:
+        42%
+        70%;
+
+
+      animation:
+
+        mermaidMovement
+        6.5s
+        ease-in-out
+        infinite;
+
+
+      filter:
+
+        drop-shadow(
+
+          0
+          5px
+          4px
+          rgba(170,115,145,.025)
+
+        );
+
+    }
+
+
+
+    @keyframes mermaidMovement {
+
+      0%,
+      100% {
+
+        transform:
+
+          translateY(2px)
+
+          rotate(.18deg);
+
+      }
+
+
+      50% {
+
+        transform:
+
+          translateY(-4px)
+
+          rotate(-.30deg);
+
+      }
+
+    }
+
+
+
+    /* ==================================================
+       BURBUJAS INVITACIÓN
+       ================================================== */
+
+    #invitationBubbles {
+
+      position: absolute;
+
+      inset: 0;
+
+      z-index: 4;
+
+      overflow: hidden;
+
+      pointer-events: none;
+
+    }
+
+
+
+    /* ==================================================
+       CONTENIDO
+
+       AHORA SOLO OCUPA EL CENTRO.
        ================================================== */
 
     .information-layer {
@@ -1076,13 +885,38 @@
 
       z-index: 10;
 
-      inset: 0;
+
+      top: 50%;
+
+      left: 50%;
+
+
+      /*
+       Esta es la clave.
+
+       La información ocupa solo
+       la parte central y deja
+       mucho aire a izquierda y derecha.
+      */
+
+      width: 46%;
+
+      height: 96%;
+
+
+      transform:
+        translate(
+          -50%,
+          -50%
+        );
+
 
       display: flex;
 
       justify-content: center;
 
       align-items: center;
+
 
       pointer-events: none;
 
@@ -1102,24 +936,56 @@
 
 
 
-
     /* ==================================================
-       ÁREAS CLICABLES
+       CLICS
+
+       Estas áreas se posicionan dentro
+       del área CENTRAL, no en todo el canvas.
        ================================================== */
+
+    .interactive-center {
+
+      position: absolute;
+
+      z-index: 20;
+
+
+      top: 50%;
+
+      left: 50%;
+
+
+      width: 46%;
+
+      height: 96%;
+
+
+      transform:
+        translate(
+          -50%,
+          -50%
+        );
+
+
+      pointer-events: none;
+
+    }
+
+
 
     .click-area {
 
       position: absolute;
 
-      z-index: 30;
-
       display: block;
+
+      pointer-events: auto;
+
+      cursor: pointer;
 
       background: transparent;
 
       border: none;
-
-      cursor: pointer;
 
       text-decoration: none;
 
@@ -1130,15 +996,17 @@
 
 
 
-    /* ubicación */
+    /*
+     PLAZA TRIBECA
+    */
 
     .map-area {
 
-      left: 28%;
+      left: 24%;
 
-      top: 75%;
+      top: 74%;
 
-      width: 44%;
+      width: 52%;
 
       height: 8%;
 
@@ -1146,15 +1014,17 @@
 
 
 
-    /* confirmar asistencia */
+    /*
+     CONFIRMA ASISTENCIA
+    */
 
     .confirm-area {
 
-      left: 5%;
+      left: 2%;
 
       top: 87%;
 
-      width: 47%;
+      width: 51%;
 
       height: 9%;
 
@@ -1164,15 +1034,17 @@
 
 
 
-    /* preguntas */
+    /*
+     PREGUNTAS
+    */
 
     .questions-area {
 
-      right: 5%;
+      right: 2%;
 
       top: 87%;
 
-      width: 42%;
+      width: 43%;
 
       height: 9%;
 
@@ -1184,100 +1056,188 @@
 
     .click-area:active {
 
-      transform:
-        scale(.985);
-
       background:
-
-        rgba(
-          255,
-          255,
-          255,
-          .06
-        );
+        rgba(255,255,255,.08);
 
     }
 
 
 
-
     /* ==================================================
-       COMPUTADORA
+       TABLET
        ================================================== */
 
     @media
-    (min-width: 850px) {
-
-      .invitation-section {
-
-        padding:
-
-          40px
-          0
-          70px;
-
-      }
-
+    (max-width: 900px) {
 
       .invitation {
 
-        border-radius: 5px;
+        width: 98vw;
 
-
-        box-shadow:
-
-          0
-          25px
-          80px
-          rgba(
-            117,
-            91,
-            76,
-            .09
-          );
+        aspect-ratio: 1 / 1;
 
       }
 
-    }
-
-
-
-
-    /* ==================================================
-       CELULARES PEQUEÑOS
-       ================================================== */
-
-    @media
-    (max-width: 500px) {
 
       .pirate-wrapper {
 
-        left: -15%;
-
-        width: 50%;
+        width: 24%;
 
       }
 
 
       .mermaid-wrapper {
 
-        right: -15%;
-
-        width: 48%;
+        width: 24%;
 
       }
 
 
-      .invitation::after {
+      .safe-center {
 
-        width: 70%;
+        left: 24%;
+
+        right: 24%;
+
+      }
+
+
+      .information-layer,
+      .interactive-center {
+
+        width: 52%;
+
+        height: 95%;
+
+      }
+
+
+      .pirate {
+
+        width: 210%;
+
+        left: -95%;
+
+      }
+
+
+      .mermaid {
+
+        width: 210%;
+
+        right: -95%;
+
+      }
+
+    }
+
+
+
+    /* ==================================================
+       CELULAR
+       ================================================== */
+
+    @media
+    (max-width: 600px) {
+
+      .invitation-section {
+
+        padding:
+          0
+          0
+          35px;
+
+      }
+
+
+      .invitation {
+
+        width: 100vw;
+
+
+        /*
+         En teléfono sigue siendo
+         más vertical para que el texto
+         no quede demasiado pequeño.
+        */
+
+        aspect-ratio: 3 / 4;
+
+        border-radius: 0;
+
+        box-shadow: none;
+
+      }
+
+
+
+      /*
+       En celular reducimos todavía
+       más el espacio de decoraciones.
+      */
+
+      .pirate-wrapper {
+
+        width: 18%;
+
+      }
+
+
+      .mermaid-wrapper {
+
+        width: 18%;
+
+      }
+
+
+
+      .safe-center {
+
+        left: 18%;
+
+        right: 18%;
+
+      }
+
+
+
+      .information-layer,
+      .interactive-center {
+
+        width: 64%;
+
+        height: 96%;
+
+      }
+
+
+
+      .pirate {
+
+        width: 310%;
+
+        left: -205%;
+
+        bottom: 0;
+
+      }
+
+
+
+      .mermaid {
+
+        width: 310%;
+
+        right: -205%;
+
+        bottom: 0;
 
       }
 
 
       .ocean-title {
 
-        font-size: 19px;
+        font-size: 20px;
 
         letter-spacing: 6px;
 
@@ -1287,18 +1247,15 @@
 
 
 
-
     /* ==================================================
-       ACCESIBILIDAD
+       MOVIMIENTO REDUCIDO
        ================================================== */
 
     @media
     (prefers-reduced-motion: reduce) {
 
       html {
-
         scroll-behavior: auto;
-
       }
 
 
@@ -1317,7 +1274,6 @@
     }
 
 
-
   </style>
 
 </head>
@@ -1327,9 +1283,8 @@
 <body>
 
 
-
   <!-- ==================================================
-       PRIMERA PANTALLA
+       PANTALLA 1 — OCÉANO
        ================================================== -->
 
   <section
@@ -1341,14 +1296,8 @@
   >
 
 
-
-    <!-- Burbujas -->
-
     <div id="oceanBubbles"></div>
 
-
-
-    <!-- Texto central -->
 
     <div class="ocean-center">
 
@@ -1385,25 +1334,13 @@
     </div>
 
 
-
-    <div
-
-      class="transition-circle"
-
-      aria-hidden="true"
-
-    ></div>
-
-
-
   </section>
 
 
 
 
-
   <!-- ==================================================
-       SEGUNDA PANTALLA
+       PANTALLA 2 — INVITACIÓN
        ================================================== -->
 
   <section
@@ -1415,13 +1352,13 @@
   >
 
 
-
     <div class="invitation">
 
 
 
       <!-- ==============================================
-           PIRATA + OLAS
+           PIRATA
+           LIMITADO A LA IZQUIERDA
            ============================================== -->
 
       <div class="pirate-wrapper">
@@ -1442,10 +1379,9 @@
 
 
 
-
-
       <!-- ==============================================
-           SIRENA + OLAS
+           SIRENA
+           LIMITADA A LA DERECHA
            ============================================== -->
 
       <div class="mermaid-wrapper">
@@ -1466,8 +1402,6 @@
 
 
 
-
-
       <!-- ==============================================
            BURBUJAS
            ============================================== -->
@@ -1475,6 +1409,12 @@
       <div id="invitationBubbles"></div>
 
 
+
+      <!-- ==============================================
+           ZONA CREMA QUE PROTEGE EL TEXTO
+           ============================================== -->
+
+      <div class="safe-center"></div>
 
 
 
@@ -1498,66 +1438,64 @@
 
 
 
-
-
       <!-- ==============================================
-           GOOGLE MAPS
+           ÁREAS INTERACTIVAS
            ============================================== -->
 
-      <a
-
-        class="click-area map-area"
-
-        href="https://maps.app.goo.gl/qPQYuWRUw7UVQDpi6?g_st=ic"
-
-        target="_blank"
-
-        rel="noopener noreferrer"
-
-        aria-label="Abrir Plaza Tribeca en Google Maps"
-
-      ></a>
+      <div class="interactive-center">
 
 
 
+        <!-- GOOGLE MAPS -->
 
+        <a
 
-      <!-- ==============================================
-           CONFIRMAR ASISTENCIA
-           ============================================== -->
+          class="click-area map-area"
 
-      <a
+          href="https://maps.app.goo.gl/qPQYuWRUw7UVQDpi6?g_st=ic"
 
-        class="click-area confirm-area"
+          target="_blank"
 
-        id="confirmButton"
+          rel="noopener noreferrer"
 
-        href="#"
+          aria-label="Abrir Plaza Tribeca en Google Maps"
 
-        aria-label="Confirmar asistencia por WhatsApp"
-
-      ></a>
-
+        ></a>
 
 
 
+        <!-- CONFIRMAR -->
 
-      <!-- ==============================================
-           PREGUNTAS
-           ============================================== -->
+        <a
 
-      <a
+          class="click-area confirm-area"
 
-        class="click-area questions-area"
+          id="confirmButton"
 
-        id="questionsButton"
+          href="#"
 
-        href="#"
+          aria-label="Confirmar asistencia por WhatsApp"
 
-        aria-label="Enviar preguntas por WhatsApp"
+        ></a>
 
-      ></a>
 
+
+        <!-- PREGUNTAS -->
+
+        <a
+
+          class="click-area questions-area"
+
+          id="questionsButton"
+
+          href="#"
+
+          aria-label="Preguntas por WhatsApp"
+
+        ></a>
+
+
+      </div>
 
 
     </div>
@@ -1568,14 +1506,12 @@
 
 
 
-
   <script>
 
 
     /* ==================================================
        WHATSAPP
        ================================================== */
-
 
     const whatsappNumber =
       "529987399674";
@@ -1596,11 +1532,9 @@ Tengo preguntas sobre el evento “Under The Sea”`;
 
 
 
-
     /* ==================================================
-       CONFIRMAR ASISTENCIA
+       CONFIRMAR
        ================================================== */
-
 
     document
       .getElementById(
@@ -1612,11 +1546,10 @@ Tengo preguntas sobre el evento “Under The Sea”`;
 
         function(event) {
 
-
           event.preventDefault();
 
 
-          const whatsappURL =
+          const url =
 
             "https://wa.me/"
             +
@@ -1630,13 +1563,9 @@ Tengo preguntas sobre el evento “Under The Sea”`;
 
 
           window.open(
-
-            whatsappURL,
-
+            url,
             "_blank"
-
           );
-
 
         }
 
@@ -1645,11 +1574,9 @@ Tengo preguntas sobre el evento “Under The Sea”`;
 
 
 
-
     /* ==================================================
        PREGUNTAS
        ================================================== */
-
 
     document
       .getElementById(
@@ -1661,11 +1588,10 @@ Tengo preguntas sobre el evento “Under The Sea”`;
 
         function(event) {
 
-
           event.preventDefault();
 
 
-          const whatsappURL =
+          const url =
 
             "https://wa.me/"
             +
@@ -1679,13 +1605,9 @@ Tengo preguntas sobre el evento “Under The Sea”`;
 
 
           window.open(
-
-            whatsappURL,
-
+            url,
             "_blank"
-
           );
-
 
         }
 
@@ -1694,11 +1616,9 @@ Tengo preguntas sobre el evento “Under The Sea”`;
 
 
 
-
     /* ==================================================
-       FLECHA → INVITACIÓN
+       BAJAR A INVITACIÓN
        ================================================== */
-
 
     document
       .getElementById(
@@ -1733,205 +1653,112 @@ Tengo preguntas sobre el evento “Under The Sea”`;
 
 
 
-
     /* ==================================================
        CREAR BURBUJAS
        ================================================== */
 
-
     function createBubbles(
-
       containerId,
-
       quantity
-
     ) {
 
 
       const container =
-
-        document
-          .getElementById(
-            containerId
-          );
-
+        document.getElementById(
+          containerId
+        );
 
 
       for (
-
         let i = 0;
-
         i < quantity;
-
         i++
-
       ) {
 
 
         const bubble =
-
-          document
-            .createElement(
-              "span"
-            );
-
-
-
-        bubble
-          .classList
-          .add(
-            "bubble"
+          document.createElement(
+            "span"
           );
 
+
+        bubble.classList.add(
+          "bubble"
+        );
 
 
         const size =
-
-          Math.random()
-          *
-          26
-          +
-          8;
-
+          Math.random() * 26 + 8;
 
 
         const left =
-
-          Math.random()
-          *
-          96;
-
+          Math.random() * 96;
 
 
         const duration =
-
-          Math.random()
-          *
-          8
-          +
-          9;
-
+          Math.random() * 8 + 9;
 
 
         const delay =
-
-          Math.random()
-          *
-          -18;
-
+          Math.random() * -18;
 
 
         const drift =
-
-          Math.random()
-          *
-          45
-          -
-          22;
+          Math.random() * 44 - 22;
 
 
-
-        bubble
-          .style
-          .setProperty(
-
-            "--size",
-
-            size + "px"
-
-          );
+        bubble.style.setProperty(
+          "--size",
+          size + "px"
+        );
 
 
-
-        bubble
-          .style
-          .setProperty(
-
-            "--left",
-
-            left + "%"
-
-          );
+        bubble.style.setProperty(
+          "--left",
+          left + "%"
+        );
 
 
-
-        bubble
-          .style
-          .setProperty(
-
-            "--duration",
-
-            duration + "s"
-
-          );
+        bubble.style.setProperty(
+          "--duration",
+          duration + "s"
+        );
 
 
-
-        bubble
-          .style
-          .setProperty(
-
-            "--delay",
-
-            delay + "s"
-
-          );
+        bubble.style.setProperty(
+          "--delay",
+          delay + "s"
+        );
 
 
-
-        bubble
-          .style
-          .setProperty(
-
-            "--drift",
-
-            drift + "px"
-
-          );
+        bubble.style.setProperty(
+          "--drift",
+          drift + "px"
+        );
 
 
-
-        container
-          .appendChild(
-            bubble
-          );
-
+        container.appendChild(
+          bubble
+        );
 
       }
-
 
     }
 
 
-
-
-
-    /* Burbujas portada */
-
     createBubbles(
-
       "oceanBubbles",
-
       22
-
     );
 
-
-
-    /* Burbujas invitación */
 
     createBubbles(
-
       "invitationBubbles",
-
-      15
-
+      16
     );
-
 
 
   </script>
-
 
 
 </body>
