@@ -73,14 +73,35 @@
       bottom: 28px;
       left: 50%;
       transform: translateX(-50%);
-      color: rgba(255,255,255,.92);
-      font-size: 28px;
+      width: 58px;
+      height: 58px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 50%;
+      background: rgba(255,255,255,.10);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      color: rgba(255,255,255,.98);
+      font-size: 31px;
+      line-height: 1;
+      cursor: pointer;
       animation: floatArrow 1.6s ease-in-out infinite;
       user-select: none;
+      box-shadow: 0 8px 30px rgba(90,160,190,.13);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .scroll-cue:hover {
+      background: rgba(255,255,255,.20);
+    }
+
+    .scroll-cue span {
+      transform: translateY(-3px);
     }
 
     @keyframes floatArrow {
-      0%,100% { transform: translate(-50%, 0); opacity: .55; }
+      0%,100% { transform: translate(-50%, 0); opacity: .72; }
       50% { transform: translate(-50%, 10px); opacity: 1; }
     }
 
@@ -116,6 +137,26 @@
       0%   { transform: translateY(0) scale(.85); opacity: 0; }
       12%  { opacity: .8; }
       100% { transform: translateY(-120vh) scale(1.12); opacity: 0; }
+    }
+
+    /* TRANSICIÓN AL BAJAR */
+    body.is-transitioning .hero {
+      filter: brightness(1.03) saturate(1.02);
+    }
+
+    body.is-transitioning .invitation-section {
+      animation: invitationReveal 1.15s ease both;
+    }
+
+    @keyframes invitationReveal {
+      from {
+        opacity: .45;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* INVITACIÓN */
@@ -199,7 +240,9 @@
 
   <section class="hero" id="inicio">
     <h1 class="hero-title">UNDER THE SEA</h1>
-    <div class="scroll-cue" aria-hidden="true">⌄</div>
+    <button class="scroll-cue" id="scrollButton" aria-label="Bajar a la invitación">
+      <span>⌄</span>
+    </button>
   </section>
 
   <section class="invitation-section" id="invitacion">
@@ -289,6 +332,34 @@
       startBubbles();
       stopBubblesLater();
     }, { passive: true });
+
+    function bubbleBurst(amount = 34) {
+      for (let i = 0; i < amount; i++) {
+        setTimeout(createBubble, i * 45);
+      }
+    }
+
+    const scrollButton = document.getElementById("scrollButton");
+    const invitationSection = document.getElementById("invitacion");
+
+    scrollButton.addEventListener("click", () => {
+      document.body.classList.add("is-transitioning");
+
+      // Muchísimas más burbujas durante la transición
+      startBubbles();
+      bubbleBurst(42);
+
+      invitationSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      setTimeout(() => {
+        document.body.classList.remove("is-transitioning");
+      }, 1500);
+
+      stopBubblesLater();
+    });
   </script>
 </body>
 </html>
